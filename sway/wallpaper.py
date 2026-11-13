@@ -8,7 +8,7 @@ import time
 
 # Change this directory or interval (in seconds) to suit your preferences.
 DIRECTORY = Path.home() / 'Pictures' / 'Wallpaper'
-INTERVAL_SECONDS = 300
+INTERVAL_SECONDS = 900
 EXTENSIONS = {'.jpg', '.jpeg', '.png', '.webp', '.bmp'}
 
 index = 0
