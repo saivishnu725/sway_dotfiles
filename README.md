@@ -26,6 +26,7 @@ Choose **Sway** at the login screen; choose **Plasma** to return. Save work befo
 - Super+Escape or Lock in the [Power] menu starts swaylock.
 - The [Power] panel button opens a menu for lock, logout, reboot, and shutdown; logout, reboot, and shutdown ask for confirmation.
 - Super+Shift+E asks before logging out. The top bar shows workspaces and the date/time; click the clock to open Calindori as a floating calendar window.
+- The panel shows CPU usage, RAM usage, and download/upload rates to the left of Mute. CPU is sampled over the previous second; RAM uses total minus available memory. Network rates sum all non-loopback interfaces, including VPNs and virtual interfaces, so traffic can be counted more than once. Rates are bytes per second (KiB/s or MiB/s).
 - Panel buttons **Mute**, **Prev**, **Play/Pause**, and **Next** control the default audio output and MPRIS-compatible media players. Prev and Next change tracks; they do not seek within a track.
 
 The clock uses [sway/clock.py](sway/clock.py): it sends the time and buttons to swaybar and launches commands on a left click. The media buttons use `playerctl`; Mute uses the same audio helper as the keyboard key. If multiple players are open, playerctl chooses an available player. The `for_window` rule in the Sway config requests a 500 × 600 floating window; adjust those numbers to change its size. The rule depends on Calindori reporting `org.kde.calindori` as its Wayland app ID and should be checked in the session.

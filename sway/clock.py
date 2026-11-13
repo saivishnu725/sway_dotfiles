@@ -39,11 +39,59 @@ def handle_clicks():
                 print(f'Could not launch {command[0]}: {error}', file=sys.stderr)
 
 
+# Read Linux counters directly, avoiding extra polling processes.
+def sample():
+    fields = [int(value) for value in Path('/proc/stat').read_text().splitlines()[0].split()[1:]]
+    cpu_total = sum(fields[:8])  # guest time is already included in user/nice.
+    cpu_idle = fields[3] + fields[4]
+    memory = {}
+    for line in Path('/proc/meminfo').read_text().splitlines():
+        parts = line.split()
+        if len(parts) >= 2:
+            memory[parts[0].rstrip(':')] = int(parts[1])
+    used = 100 * (memory['MemTotal'] - memory['MemAvailable']) / memory['MemTotal']
+    rx = tx = 0
+    for line in Path('/proc/net/dev').read_text().splitlines()[2:]:
+        name, values = line.split(':', 1)
+        if name.strip() != 'lo':
+            counters = values.split()
+            rx += int(counters[0])
+            tx += int(counters[8])
+    return cpu_total, cpu_idle, used, rx, tx, time.monotonic()
+
+
+def rate(value):
+    # Display bytes per second in human-readable binary units.
+    for unit in ('B/s', 'KiB/s', 'MiB/s', 'GiB/s'):
+        if value < 1024 or unit == 'GiB/s':
+            return f'{value:.1f} {unit}'
+        value /= 1024
+
+
 # Announce the protocol and request click events, then start the status array.
 print(json.dumps({'version': 1, 'click_events': True}), flush=True)
 print('[', flush=True)
 threading.Thread(target=handle_clicks, daemon=True).start()
+previous = None
 while True:
+    # Rates and CPU usage compare this sample with the previous one.
+    try:
+        current = sample()
+        cpu = '--'
+        down = up = '--'
+        if previous:
+            total = current[0] - previous[0]
+            idle = current[1] - previous[1]
+            cpu = f'{max(0, min(100, 100 * (total - idle) / total)):.0f}%' if total > 0 else '--'
+            elapsed = max(current[5] - previous[5], 0.001)
+            down = rate(max(0, current[3] - previous[3]) / elapsed)
+            up = rate(max(0, current[4] - previous[4]) / elapsed)
+        previous = current
+        vitals = {'name': 'vitals', 'full_text': f'CPU {cpu}  RAM {current[2]:.0f}%  Down {down}  Up {up}'}
+    except (OSError, ValueError, KeyError, IndexError) as error:
+        print(f'Could not read system vitals: {error}', file=sys.stderr)
+        previous = None
+        vitals = {'name': 'vitals', 'full_text': 'Vitals unavailable'}
     # A named block lets the click handler identify the clock.
     clock = {'name': 'clock', 'full_text': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
     # Labels are kept as text so they work without a special icon font.
@@ -54,5 +102,5 @@ while True:
         {'name': 'next', 'full_text': '[Next]'},
         {'name': 'power', 'full_text': '[Power]'},
     ]
-    print(json.dumps([*controls, clock]) + ',', flush=True)
+    print(json.dumps([vitals, *controls, clock]) + ',', flush=True)
     time.sleep(1)
