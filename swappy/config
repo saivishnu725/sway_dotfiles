@@ -1,0 +1,8 @@
+[Default]
+# Save annotated images alongside the original screenshots.
+save_dir=$HOME/Pictures/Screenshots
+save_filename_format=Annotated-%Y-%m-%d_%H-%M-%S.png
+# Close the editor after Save or Copy to make the action visible.
+early_exit=true
+# Show annotation tools when the editor opens.
+show_panel=true
