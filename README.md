@@ -96,3 +96,22 @@ ln -s "$PWD/xdg-desktop-portal-wlr/config" ~/.config/xdg-desktop-portal-wlr/conf
 Inspect and back up existing `~/.config/sway/config`, `~/.config/sway/clock.py`, `~/.config/sway/audio.py`, `~/.config/sway/displays.py`, `~/.config/sway/shortcuts.py`, `~/.config/sway/screenshot.sh`, `~/.config/sway/battery.py`, `~/.config/sway/wallpaper.py`, `~/.config/mako/config`, `~/.config/swappy/config`, and `~/.config/xdg-desktop-portal-wlr/config` files before linking; do not overwrite it blindly. The link uses the clone's absolute path, so recreate it if the repository moves. Keep credentials and NetworkManager connection profiles out of Git.
 
 
+
+## Zsh and Neovim
+
+`~/.zshrc` links to [zsh/zshrc](zsh/zshrc). The original was backed up beside it with a `.backup-<timestamp>` suffix. A machine-specific network alias remains in the private `~/.zshrc.local`, which the tracked file sources if present; it is not in Git. Shell history and `.zshenv` are also not tracked. Review backups before deleting them.
+
+Zsh uses Oh My Zsh with the `dst` theme, its archlinux, gh, git, rust, and sudo plugins, plus `zsh-autosuggestions` and `zsh-syntax-highlighting` in the Oh My Zsh custom plugins directory. It also uses Rust's `$HOME/.cargo/env`, optionally loads NVM, and sets Android SDK paths. Install or adjust those dependencies and paths on another machine; `.zshenv` separately sources Cargo on this machine. The configuration contains aliases and functions for Git, Cargo, editing and compiling C. The tracked file can be checked with `zsh -n zsh/zshrc`.
+
+Neovim's `~/.config/nvim/init.lua` and `lazy-lock.json` link to [nvim](nvim/); timestamped backups are beside the originals. The config enables line numbers, four-space indentation, clipboard integration, `clangd` LSP, C/Lua Tree-sitter, and Git integration. It expects lazy.nvim at Neovim's data directory, the locked plugins, `clangd`, C/Lua parsers, and GCC for its C run mapping. The lockfile records plugin revisions but does not install lazy.nvim or the plugins by itself. The C run mapping expects an `output` directory next to the file. Plugin bootstrap and a clean-machine test are still needed for full reproduction.
+
+To recreate these links after cloning, inspect and back up any existing files first. From the repository root:
+
+```sh
+mkdir -p ~/.config/nvim
+ln -s "$PWD/zsh/zshrc" ~/.zshrc
+ln -s "$PWD/nvim/init.lua" ~/.config/nvim/init.lua
+ln -s "$PWD/nvim/lazy-lock.json" ~/.config/nvim/lazy-lock.json
+```
+
+Recreate `~/.zshrc.local` separately for machine-specific aliases if needed. Never put shell history, credentials, or private local settings in Git.
