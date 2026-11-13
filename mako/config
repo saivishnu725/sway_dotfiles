@@ -6,3 +6,8 @@ default-timeout=5000
 margin=10
 # Limit notification width, in pixels.
 width=350
+
+# Group audio key notifications and dismiss them quickly.
+[app-name="Sway audio"]
+group-by=app-name
+default-timeout=1500
