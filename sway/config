@@ -21,6 +21,9 @@ bindsym $mod+n exec nm-connection-editor
 # Audio controls
 bindsym $mod+a exec pavucontrol
 
+# Open KDE Spectacle for screenshots and annotation.
+bindsym $mod+s exec env QT_QPA_PLATFORMTHEME=kde spectacle
+
 # Open KDE Kalk with the keyboard calculator key.
 bindsym XF86Calculator exec env QT_QPA_PLATFORMTHEME=kde kalk
 
@@ -69,7 +72,7 @@ bindsym $mod+h splith
 bindsym $mod+v splitv
 # Choose tabbed, stacked, or split display for the focused container.
 bindsym $mod+w layout tabbed
-bindsym $mod+s layout stacking
+bindsym $mod+Ctrl+s layout stacking
 bindsym $mod+Shift+s layout toggle split
 
 # Select workspaces 1–10; add Shift to move the focused window there.

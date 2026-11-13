@@ -22,10 +22,11 @@ Choose **Sway** at the login screen; choose **Plasma** to return. Save work befo
 
 - Super+T: COSMIC Terminal; Super+D: Wofi; Super+E: Dolphin; Super+B: Firefox.
 - The keyboard calculator key opens KDE Kalk in a floating window. This assumes the key reports `XF86Calculator` and Kalk reports `org.kde.kalk` as its Wayland app ID; test both in the session.
+- Super+S opens KDE Spectacle for screenshots and annotation. It replaces the old stacking shortcut, now Super+Ctrl+S. Spectacle on Sway uses the screen-sharing portal; test available capture modes and annotation in the session. OBS Studio is installed for optional recording.
 - Super+N: connection editor; Super+A: pavucontrol. The editor manages saved connections; it is not a network tray applet.
 - Super+arrows: focus a window; add Shift to move it. Super+Q closes it.
 - Super+1–9 or 0: select workspace 1–10; add Shift to move the focused window there.
-- Super+H or Super+V: split the focused container horizontally or vertically for subsequent windows. Super+W selects tabs, Super+S stacking, and Super+Shift+S returns to split layout.
+- Super+H or Super+V: split the focused container horizontally or vertically for subsequent windows. Super+W selects tabs, Super+Ctrl+S selects stacking, and Super+Shift+S returns to split layout.
 - Super+F toggles fullscreen; Super+Shift+F or Super+Shift+Space toggles floating. Hold Super while dragging with the left mouse button to move, or the right button to resize.
 - Super+Escape or Lock in the [Power] menu starts swaylock.
 - Click the battery indicator at the far right for battery status, an estimated remaining or charging time when UPower provides one, and available power profiles. Select Battery saver, Balanced, or Performance to change it; unavailable profiles are omitted. Estimates vary with load and may be unavailable.
@@ -59,7 +60,7 @@ This starter does not configure idle handling. Test the session and decide which
 
 ## Reproduce
 
-Install Sway, COSMIC Terminal, Dolphin, Firefox, Wofi, NetworkManager, the NetworkManager connection editor, Kalk, pavucontrol, Calindori, swaylock, Mako, libnotify, WirePlumber, playerctl, swaybg, upower, power-profiles-daemon, xdg-desktop-portal, xdg-desktop-portal-gtk, xdg-desktop-portal-wlr, slurp, and Python 3 using your distribution's packages. Ensure NetworkManager is running. Package names may differ. Clone the repository, then from its root:
+Install Sway, COSMIC Terminal, Dolphin, Firefox, Wofi, NetworkManager, the NetworkManager connection editor, Kalk, Spectacle, pavucontrol, Calindori, swaylock, Mako, libnotify, WirePlumber, playerctl, swaybg, upower, power-profiles-daemon, xdg-desktop-portal, xdg-desktop-portal-gtk, xdg-desktop-portal-wlr, slurp, and Python 3 using your distribution's packages. Ensure NetworkManager is running. Package names may differ. Clone the repository, then from its root:
 
 ```sh
 sway --validate --config "$PWD/sway/config"
