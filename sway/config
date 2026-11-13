@@ -64,8 +64,12 @@ bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
-# Show workspace buttons and a clock in a bar at the top of the screen.
+# Open Calindori as a compact floating window when its Wayland app ID matches.
+for_window [app_id="org.kde.calindori"] floating enable, resize set 500 600
+
+# Show workspace buttons and a clickable clock in a bar at the top.
 bar {
     position top
-    status_command while date +'%Y-%m-%d %H:%M:%S'; do sleep 1; done
+    # Run the repository clock script through the config symlink.
+    status_command python3 ~/.config/sway/clock.py
 }

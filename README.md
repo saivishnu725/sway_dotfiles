@@ -22,18 +22,23 @@ Choose **Sway** at the login screen; choose **Plasma** to return. Save work befo
 - Super+1–9 or 0: select workspace 1–10; add Shift to move the focused window there.
 - Super+H or Super+V: split the focused container horizontally or vertically for subsequent windows. Super+W selects tabs, Super+S stacking, and Super+Shift+S returns to split layout.
 - Super+F toggles fullscreen; Super+Shift+Space toggles floating. Hold Super while dragging with the left mouse button to move, or the right button to resize.
-- Super+Shift+E asks before logging out. The top bar shows workspaces and the date/time.
+- Super+Shift+E asks before logging out. The top bar shows workspaces and the date/time; click the clock to open Calindori as a floating calendar window.
+
+The clock uses [sway/clock.py](sway/clock.py): it sends the time to swaybar and launches Calindori on a left click. The `for_window` rule in the Sway config requests a 500 × 600 floating window; adjust those numbers to change its size. The rule depends on Calindori reporting `org.kde.calindori` as its Wayland app ID and should be checked in the session.
 
 This starter does not configure a screen locker, idle handling, notifications, wallpaper, audio keys, or portal integration. Test the session and decide which features to add next.
 
 ## Reproduce
 
-Install Sway, Konsole, Dolphin, Firefox, Wofi, NetworkManager, the NetworkManager connection editor, and pavucontrol using your distribution's packages. Ensure NetworkManager is running. Package names may differ. Clone the repository, then from its root:
+Install Sway, Konsole, Dolphin, Firefox, Wofi, NetworkManager, the NetworkManager connection editor, , pavucontrol, Calindori, and Python 3 using your distribution's packages. Ensure NetworkManager is running. Package names may differ. Clone the repository, then from its root:
 
 ```sh
 sway --validate --config "$PWD/sway/config"
 mkdir -p ~/.config/sway
 ln -s "$PWD/sway/config" ~/.config/sway/config
+ln -s "$PWD/sway/clock.py" ~/.config/sway/clock.py
 ```
 
-Inspect and back up an existing `~/.config/sway/config` before linking; do not overwrite it blindly. The link uses the clone's absolute path, so recreate it if the repository moves. Keep credentials and NetworkManager connection profiles out of Git.
+Inspect and back up existing `~/.config/sway/config` and `~/.config/sway/clock.py` files before linking; do not overwrite it blindly. The link uses the clone's absolute path, so recreate it if the repository moves. Keep credentials and NetworkManager connection profiles out of Git.
+
+A searchable shortcut overview is planned for later, once the main setup is mostly complete.
