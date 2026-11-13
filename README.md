@@ -22,7 +22,7 @@ Choose **Sway** at the login screen; choose **Plasma** to return. Save work befo
 
 - Super+T: COSMIC Terminal; Super+D: Wofi; Super+E: Dolphin; Super+B: Firefox.
 - The keyboard calculator key opens KDE Kalk in a floating window. This assumes the key reports `XF86Calculator` and Kalk reports `org.kde.kalk` as its Wayland app ID; test both in the session.
-- Super+S selects a screen region with Slurp, captures it with Grim, and opens Swappy for annotation, copying, or saving. Install Swappy on CachyOS with `sudo pacman -S swappy`; Grim and Slurp are also required. Escape cancels selection. The shortcut replaces the old stacking shortcut, now Super+Ctrl+S. OBS Studio is installed for optional recording.
+- Super+S selects a screen region with Slurp, captures it with Grim, saves the original to `~/Pictures/Screenshots`, and opens Swappy for annotation, copying, or saving an edited version. Install Swappy on CachyOS with `sudo pacman -S swappy`; Grim and Slurp are also required. Escape cancels selection. The shortcut replaces the old stacking shortcut, now Super+Ctrl+S. OBS Studio is installed for optional recording.
 - Super+N: connection editor; Super+A: pavucontrol. The editor manages saved connections; it is not a network tray applet.
 - Super+arrows: focus a window; add Shift to move it. Super+Q closes it.
 - Super+1–9 or 0: select workspace 1–10; add Shift to move the focused window there.
