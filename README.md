@@ -28,9 +28,9 @@ Choose **Sway** at the login screen; choose **Plasma** to return. Save work befo
 - Super+1–9 or 0: select workspace 1–10; add Shift to move the focused window there.
 - Super+H or Super+V: split the focused container horizontally or vertically for subsequent windows. Super+W selects tabs, Super+Ctrl+S selects stacking, and Super+Shift+S returns to split layout.
 - Super+F toggles fullscreen; Super+Shift+F or Super+Shift+Space toggles floating. Hold Super while dragging with the left mouse button to move, or the right button to resize.
-- Super+Escape or Lock in the [Power] menu starts swaylock.
+- Super+Escape or Lock in the [⏻ Power] menu starts swaylock.
 - Click the battery indicator at the far right for battery status, an estimated remaining or charging time when UPower provides one, and available power profiles. Select Battery saver, Balanced, or Performance to change it; unavailable profiles are omitted. Estimates vary with load and may be unavailable.
-- The [Power] panel button opens a menu for lock, logout, reboot, and shutdown; logout, reboot, and shutdown ask for confirmation.
+- The [⏻ Power] panel button opens a menu for lock, logout, reboot, and shutdown; logout, reboot, and shutdown ask for confirmation.
 - Super+Shift+E asks before logging out. The top bar shows workspaces and the date/time; click the clock to open Calindori as a floating calendar window.
 - The panel shows CPU usage, RAM usage, and download/upload rates to the left of Mute. The panel refreshes every two seconds, and CPU is sampled over that interval; RAM uses total minus available memory. Network rates sum all non-loopback interfaces, including VPNs and virtual interfaces, so traffic can be counted more than once. Rates are bytes per second (KiB/s or MiB/s).
 - Panel buttons **Mute**, **Prev**, **Play/Pause**, and **Next** control the default audio output and MPRIS-compatible media players. Prev and Next change tracks; they do not seek within a track.

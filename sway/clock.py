@@ -101,7 +101,7 @@ while True:
         {'name': 'previous', 'full_text': '[Prev]'},
         {'name': 'play', 'full_text': '[Play/Pause]'},
         {'name': 'next', 'full_text': '[Next]'},
-        {'name': 'power', 'full_text': '[Power]'},
+        {'name': 'power', 'full_text': '[⏻ Power]'},
     ]
     # Read the first present battery's percentage and charging state from sysfs.
     battery_text = 'Battery --'
