@@ -153,8 +153,8 @@ c () {
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-[ -r "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
-alias tailexitno="sudo tailscale set --exit-node="
+# Load optional machine-specific aliases kept outside Git.
+[ -r "$HOME/local_aliases.sh" ] && source "$HOME/local_aliases.sh"
 
 # export XDG_CURRENT_DESKTOP=GNOME
 export ANDROID_HOME="$HOME/Android/Sdk"

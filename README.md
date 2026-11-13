@@ -99,7 +99,7 @@ Inspect and back up existing `~/.config/sway/config`, `~/.config/sway/clock.py`,
 
 ## Zsh and Neovim
 
-`~/.zshrc` links to [zsh/zshrc](zsh/zshrc). The original was backed up beside it with a `.backup-<timestamp>` suffix. A machine-specific network alias remains in the private `~/.zshrc.local`, which the tracked file sources if present; it is not in Git. Shell history and `.zshenv` are also not tracked. Review backups before deleting them.
+`~/.zshrc` links to [zsh/zshrc](zsh/zshrc). The original was backed up beside it with a `.backup-<timestamp>` suffix. The Tailscale exit-node aliases live in the private `~/local_aliases.sh`, which the tracked file sources if present; it is not in Git. Shell history and `.zshenv` are also not tracked. Review backups before deleting them.
 
 Zsh uses Oh My Zsh with the `dst` theme, its archlinux, gh, git, rust, and sudo plugins, plus `zsh-autosuggestions` and `zsh-syntax-highlighting` in the Oh My Zsh custom plugins directory. It also uses Rust's `$HOME/.cargo/env`, optionally loads NVM, and sets Android SDK paths. Install or adjust those dependencies and paths on another machine; `.zshenv` separately sources Cargo on this machine. The configuration contains aliases and functions for Git, Cargo, editing and compiling C. The tracked file can be checked with `zsh -n zsh/zshrc`.
 
@@ -114,4 +114,4 @@ ln -s "$PWD/nvim/init.lua" ~/.config/nvim/init.lua
 ln -s "$PWD/nvim/lazy-lock.json" ~/.config/nvim/lazy-lock.json
 ```
 
-Recreate `~/.zshrc.local` separately for machine-specific aliases if needed. Never put shell history, credentials, or private local settings in Git.
+Recreate `~/local_aliases.sh` separately for machine-specific aliases if needed. For example, use `alias tailexit="sudo tailscale set --exit-node=<your-node> --accept-routes"` and `alias tailexitno="sudo tailscale set --exit-node="`; replace `<your-node>` with your own node address. Never put shell history, credentials, or private local settings in Git.
