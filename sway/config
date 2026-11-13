@@ -21,8 +21,8 @@ bindsym $mod+n exec nm-connection-editor
 # Audio controls
 bindsym $mod+a exec pavucontrol
 
-# Open KDE Spectacle for screenshots and annotation.
-bindsym $mod+s exec env QT_QPA_PLATFORMTHEME=kde spectacle
+# Select a region and open it in Swappy for annotation (requires swappy).
+bindsym $mod+s exec sh ~/.config/sway/screenshot.sh
 
 # Open KDE Kalk with the keyboard calculator key.
 bindsym XF86Calculator exec env QT_QPA_PLATFORMTHEME=kde kalk

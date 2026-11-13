@@ -22,7 +22,7 @@ Choose **Sway** at the login screen; choose **Plasma** to return. Save work befo
 
 - Super+T: COSMIC Terminal; Super+D: Wofi; Super+E: Dolphin; Super+B: Firefox.
 - The keyboard calculator key opens KDE Kalk in a floating window. This assumes the key reports `XF86Calculator` and Kalk reports `org.kde.kalk` as its Wayland app ID; test both in the session.
-- Super+S opens KDE Spectacle for screenshots and annotation. It replaces the old stacking shortcut, now Super+Ctrl+S. Spectacle on Sway uses the screen-sharing portal; test available capture modes and annotation in the session. OBS Studio is installed for optional recording.
+- Super+S selects a screen region with Slurp, captures it with Grim, and opens Swappy for annotation, copying, or saving. Install Swappy on CachyOS with `sudo pacman -S swappy`; Grim and Slurp are also required. Escape cancels selection. The shortcut replaces the old stacking shortcut, now Super+Ctrl+S. OBS Studio is installed for optional recording.
 - Super+N: connection editor; Super+A: pavucontrol. The editor manages saved connections; it is not a network tray applet.
 - Super+arrows: focus a window; add Shift to move it. Super+Q closes it.
 - Super+1–9 or 0: select workspace 1–10; add Shift to move the focused window there.
@@ -60,7 +60,7 @@ This starter does not configure idle handling. Test the session and decide which
 
 ## Reproduce
 
-Install Sway, COSMIC Terminal, Dolphin, Firefox, Wofi, NetworkManager, the NetworkManager connection editor, Kalk, Spectacle, pavucontrol, Calindori, swaylock, Mako, libnotify, WirePlumber, playerctl, swaybg, upower, power-profiles-daemon, xdg-desktop-portal, xdg-desktop-portal-gtk, xdg-desktop-portal-wlr, slurp, and Python 3 using your distribution's packages. Ensure NetworkManager is running. Package names may differ. Clone the repository, then from its root:
+Install Sway, COSMIC Terminal, Dolphin, Firefox, Wofi, NetworkManager, the NetworkManager connection editor, Kalk, Grim, Slurp, Swappy, wl-clipboard, pavucontrol, Calindori, swaylock, Mako, libnotify, WirePlumber, playerctl, swaybg, upower, power-profiles-daemon, xdg-desktop-portal, xdg-desktop-portal-gtk, xdg-desktop-portal-wlr, slurp, and Python 3 using your distribution's packages. Ensure NetworkManager is running. Package names may differ. Clone the repository, then from its root:
 
 ```sh
 sway --validate --config "$PWD/sway/config"
@@ -68,12 +68,13 @@ mkdir -p ~/.config/sway ~/.config/mako ~/.config/xdg-desktop-portal-wlr
 ln -s "$PWD/sway/config" ~/.config/sway/config
 ln -s "$PWD/sway/clock.py" ~/.config/sway/clock.py
 ln -s "$PWD/sway/audio.py" ~/.config/sway/audio.py
+ln -s "$PWD/sway/screenshot.sh" ~/.config/sway/screenshot.sh
 ln -s "$PWD/sway/battery.py" ~/.config/sway/battery.py
 ln -s "$PWD/sway/wallpaper.py" ~/.config/sway/wallpaper.py
 ln -s "$PWD/mako/config" ~/.config/mako/config
 ln -s "$PWD/xdg-desktop-portal-wlr/config" ~/.config/xdg-desktop-portal-wlr/config
 ```
 
-Inspect and back up existing `~/.config/sway/config`, `~/.config/sway/clock.py`, `~/.config/sway/audio.py`, `~/.config/sway/battery.py`, `~/.config/sway/wallpaper.py`, `~/.config/mako/config`, and `~/.config/xdg-desktop-portal-wlr/config` files before linking; do not overwrite it blindly. The link uses the clone's absolute path, so recreate it if the repository moves. Keep credentials and NetworkManager connection profiles out of Git.
+Inspect and back up existing `~/.config/sway/config`, `~/.config/sway/clock.py`, `~/.config/sway/audio.py`, `~/.config/sway/screenshot.sh`, `~/.config/sway/battery.py`, `~/.config/sway/wallpaper.py`, `~/.config/mako/config`, and `~/.config/xdg-desktop-portal-wlr/config` files before linking; do not overwrite it blindly. The link uses the clone's absolute path, so recreate it if the repository moves. Keep credentials and NetworkManager connection profiles out of Git.
 
 A searchable shortcut overview is planned for later, once the main setup is mostly complete.
