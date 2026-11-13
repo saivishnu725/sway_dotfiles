@@ -20,6 +20,7 @@ Touchpad tap-to-click is enabled via `input type:touchpad` and `tap enabled` in 
 
 Choose **Sway** at the login screen; choose **Plasma** to return. Save work before logging out. Super means the Windows/logo key. The configuration uses separate lines beginning with `#` for comments, `set` to define a variable, and `bindsym` to connect a key combination to a command. `exec` launches a program. Edit either the repository file or its symlink: they refer to the same file. Use Super+Shift+C to reload after editing.
 
+- Super+Shift+/ opens a searchable shortcut overview; it reads bindings from `sway/config` and shows the configured commands. Selecting an entry closes the menu without running it. Bindings added through other included files are not listed.
 - Super+Shift+V opens searchable clipboard history; selecting an item copies it back to the clipboard for pasting. Install cliphist first as described below.
 - Super+T: COSMIC Terminal; Super+D: Wofi; Super+E: Dolphin; Super+B: Firefox.
 - The keyboard calculator key opens KDE Kalk in a floating window. This assumes the key reports `XF86Calculator` and Kalk reports `org.kde.kalk` as its Wayland app ID; test both in the session.
@@ -74,6 +75,7 @@ mkdir -p ~/.config/sway ~/.config/mako ~/.config/swappy ~/.config/xdg-desktop-po
 ln -s "$PWD/sway/config" ~/.config/sway/config
 ln -s "$PWD/sway/clock.py" ~/.config/sway/clock.py
 ln -s "$PWD/sway/audio.py" ~/.config/sway/audio.py
+ln -s "$PWD/sway/shortcuts.py" ~/.config/sway/shortcuts.py
 ln -s "$PWD/sway/screenshot.sh" ~/.config/sway/screenshot.sh
 ln -s "$PWD/sway/battery.py" ~/.config/sway/battery.py
 ln -s "$PWD/sway/wallpaper.py" ~/.config/sway/wallpaper.py
@@ -82,6 +84,6 @@ ln -s "$PWD/swappy/config" ~/.config/swappy/config
 ln -s "$PWD/xdg-desktop-portal-wlr/config" ~/.config/xdg-desktop-portal-wlr/config
 ```
 
-Inspect and back up existing `~/.config/sway/config`, `~/.config/sway/clock.py`, `~/.config/sway/audio.py`, `~/.config/sway/screenshot.sh`, `~/.config/sway/battery.py`, `~/.config/sway/wallpaper.py`, `~/.config/mako/config`, `~/.config/swappy/config`, and `~/.config/xdg-desktop-portal-wlr/config` files before linking; do not overwrite it blindly. The link uses the clone's absolute path, so recreate it if the repository moves. Keep credentials and NetworkManager connection profiles out of Git.
+Inspect and back up existing `~/.config/sway/config`, `~/.config/sway/clock.py`, `~/.config/sway/audio.py`, `~/.config/sway/shortcuts.py`, `~/.config/sway/screenshot.sh`, `~/.config/sway/battery.py`, `~/.config/sway/wallpaper.py`, `~/.config/mako/config`, `~/.config/swappy/config`, and `~/.config/xdg-desktop-portal-wlr/config` files before linking; do not overwrite it blindly. The link uses the clone's absolute path, so recreate it if the repository moves. Keep credentials and NetworkManager connection profiles out of Git.
 
-A searchable shortcut overview is planned for later, once the main setup is mostly complete.
+

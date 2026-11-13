@@ -21,6 +21,9 @@ bindsym $mod+n exec nm-connection-editor
 # Audio controls
 bindsym $mod+a exec pavucontrol
 
+# Search the shortcuts listed in this Sway config.
+bindsym $mod+Shift+slash exec python3 ~/.config/sway/shortcuts.py
+
 # Select a region and open it in Swappy for annotation (requires swappy).
 bindsym $mod+s exec sh ~/.config/sway/screenshot.sh
 
@@ -35,7 +38,7 @@ bindsym --locked XF86AudioLowerVolume exec python3 ~/.config/sway/audio.py down
 bindsym --locked XF86AudioMute exec python3 ~/.config/sway/audio.py mute
 bindsym --locked XF86AudioMicMute exec python3 ~/.config/sway/audio.py mic
 
-# Rotate images from ~/Pictures/Wallpaper every five minutes (requires swaybg).
+# Rotate images from ~/Pictures/Wallpaper every fifteen minutes (requires swaybg).
 exec python3 ~/.config/sway/wallpaper.py
 
 # Record copied text and images in cliphist (requires the cliphist package).
