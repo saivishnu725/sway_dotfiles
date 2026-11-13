@@ -25,7 +25,7 @@ def handle_clicks():
         # Each named panel block maps to a command and its arguments.
         commands = {
             'clock': ['calindori'],
-            'lock': ['swaylock'],
+            'power': ['sh', '-c', "choice=$(printf 'Lock\nLogout\nReboot\nShutdown\n' | wofi --dmenu --prompt Power); case \"$choice\" in Lock) swaylock ;; Logout) swaynag -t warning -m 'Log out of Sway?' -B 'Logout' 'swaymsg exit' ;; Reboot) swaynag -t warning -m 'Reboot this computer?' -B 'Reboot' 'systemctl reboot' ;; Shutdown) swaynag -t warning -m 'Shut down this computer?' -B 'Shutdown' 'systemctl poweroff' ;; esac"],
             'mute': [sys.executable, '-u', str(Path.home() / '.config/sway/audio.py'), 'mute'],
             'previous': ['playerctl', 'previous'],
             'play': ['playerctl', 'play-pause'],
@@ -52,7 +52,7 @@ while True:
         {'name': 'previous', 'full_text': '[Prev]'},
         {'name': 'play', 'full_text': '[Play/Pause]'},
         {'name': 'next', 'full_text': '[Next]'},
-        {'name': 'lock', 'full_text': '[Lock]'},
+        {'name': 'power', 'full_text': '[Power]'},
     ]
     print(json.dumps([*controls, clock]) + ',', flush=True)
     time.sleep(1)

@@ -39,7 +39,7 @@ exec python3 ~/.config/sway/wallpaper.py
 exec mako
 
 # Lock the session manually (requires the swaylock package).
-bindsym $mod+Shift+l exec swaylock
+bindsym $mod+Escape exec swaylock
 
 # Close a window, reload this file, or confirm before exiting Sway.
 bindsym $mod+q kill

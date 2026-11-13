@@ -23,7 +23,8 @@ Choose **Sway** at the login screen; choose **Plasma** to return. Save work befo
 - Super+1–9 or 0: select workspace 1–10; add Shift to move the focused window there.
 - Super+H or Super+V: split the focused container horizontally or vertically for subsequent windows. Super+W selects tabs, Super+S stacking, and Super+Shift+S returns to split layout.
 - Super+F toggles fullscreen; Super+Shift+F or Super+Shift+Space toggles floating. Hold Super while dragging with the left mouse button to move, or the right button to resize.
-- Super+Shift+L or the [Lock] button in the top bar starts swaylock.
+- Super+Escape or Lock in the [Power] menu starts swaylock.
+- The [Power] panel button opens a menu for lock, logout, reboot, and shutdown; logout, reboot, and shutdown ask for confirmation.
 - Super+Shift+E asks before logging out. The top bar shows workspaces and the date/time; click the clock to open Calindori as a floating calendar window.
 - Panel buttons **Mute**, **Prev**, **Play/Pause**, and **Next** control the default audio output and MPRIS-compatible media players. Prev and Next change tracks; they do not seek within a track.
 
