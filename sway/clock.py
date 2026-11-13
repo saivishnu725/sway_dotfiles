@@ -95,8 +95,15 @@ while True:
         vitals = {'name': 'vitals', 'full_text': 'Vitals unavailable'}
     # A named block lets the click handler identify the clock.
     clock = {'name': 'clock', 'full_text': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+    # Show whether Mako's do-not-disturb mode is active.
+    try:
+        modes = subprocess.check_output(['makoctl', 'mode'], text=True, stderr=subprocess.DEVNULL).splitlines()
+        dnd_label = '[DND On]' if 'do-not-disturb' in modes else '[DND Off]'
+    except (OSError, subprocess.CalledProcessError):
+        dnd_label = '[DND ?]'
     # Labels are kept as text so they work without a special icon font.
     controls = [
+        {'name': 'dnd', 'full_text': dnd_label},
         {'name': 'mute', 'full_text': '[Mute]'},
         {'name': 'previous', 'full_text': '[Prev]'},
         {'name': 'play', 'full_text': '[Play/Pause]'},

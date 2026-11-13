@@ -11,3 +11,7 @@ width=350
 [app-name="Sway audio"]
 group-by=app-name
 default-timeout=1500
+
+# Hide notifications while Do Not Disturb is enabled.
+[mode=do-not-disturb]
+invisible=1
