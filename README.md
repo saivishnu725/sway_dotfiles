@@ -14,6 +14,10 @@ A gradual, reproducible Sway desktop using KDE applications, NetworkManager, and
 
 Dolphin, Kalk, and Calindori launched from the configured Sway shortcuts or clock button request the KDE Qt platform theme using `QT_QPA_PLATFORMTHEME=kde`. This is a limited experiment to see whether they pick up the existing Breeze Dark settings; applications launched elsewhere are unaffected. Reload Sway, close these apps fully, and reopen them to test. Remove `env QT_QPA_PLATFORMTHEME=kde` from the bindings (and the equivalent `env` arguments in `sway/clock.py`) to undo it.
 
+## Sway appearance
+
+The focused window and active workspace use the muted rose accent `#B76E79`. Edit the `client.focused` and `focused_workspace` colors in `sway/config` to change it; app-specific themes are separate.
+
 ## Sway basics
 
 Touchpad tap-to-click is enabled via `input type:touchpad` and `tap enabled` in the config. Change `enabled` to `disabled` to turn it off.
