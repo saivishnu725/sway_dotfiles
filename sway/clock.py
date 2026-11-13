@@ -95,13 +95,13 @@ while True:
         vitals = {'name': 'vitals', 'full_text': 'Vitals unavailable'}
     # A named block lets the click handler identify the clock.
     clock = {'name': 'clock', 'full_text': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
-    # Emoji labels for the media and power controls.
+    # Labels are kept as text so they work without a special icon font.
     controls = [
-        {'name': 'mute', 'full_text': '🔇'},
-        {'name': 'previous', 'full_text': '⏮️'},
-        {'name': 'play', 'full_text': '⏯️'},
-        {'name': 'next', 'full_text': '⏭️'},
-        {'name': 'power', 'full_text': '⏻'},
+        {'name': 'mute', 'full_text': '[Mute]'},
+        {'name': 'previous', 'full_text': '[Prev]'},
+        {'name': 'play', 'full_text': '[Play/Pause]'},
+        {'name': 'next', 'full_text': '[Next]'},
+        {'name': 'power', 'full_text': '[Power]'},
     ]
     # Read the first present battery's percentage and charging state from sysfs.
     battery_text = 'Battery --'
