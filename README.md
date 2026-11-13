@@ -1,57 +1,37 @@
 # Desktop dotfiles
 
-A gradual, reproducible niri desktop using existing KDE applications, NetworkManager, and pavucontrol. Keep changes small, explain them here, and save milestones in Git.
+A gradual, reproducible Sway desktop using KDE applications, NetworkManager, and pavucontrol. Configuration changes and explanations are saved in Git.
 
 ## Current setup
 
-Observed on 2026-11-13 on CachyOS, with KDE running on Wayland:
+- CachyOS with Plasma available as a fallback; Sway 1.12 is installed with a login-session entry.
+- The Sway starter config is [sway/config](sway/config), linked at `~/.config/sway/config`. Its comments explain each setting and shortcut.
+- Konsole, Dolphin, Firefox, Wofi, NetworkManager, `nm-connection-editor`, and pavucontrol were found installed.
+- The older [niri config](niri/config.kdl) remains in Git for reference. The user removed its link and uninstalled niri.
+- The Sway session still needs an interactive test. NetworkManager service status could not be checked in the restricted environment; run `systemctl status NetworkManager` and `nmcli general status` locally.
 
-- niri 26.04 is installed and has a Wayland login-session entry; KDE remains available.
-- NetworkManager, pavucontrol, Plasma Network Management, Dolphin, Konsole, Wofi, and `nm-connection-editor` are installed.
-- [niri/config.kdl](niri/config.kdl) is linked to `~/.config/niri/config.kdl`. It is a minimal starter, not a complete desktop shell.
-- `~/.config/pavucontrol.ini` already exists and has not been copied or linked.
-- NetworkManager's live service status could not be checked from the restricted environment. Run `systemctl status NetworkManager` locally; use `nmcli general status` for its connection state.
+## Sway basics
 
-## Using and editing niri
+Choose **Sway** at the login screen; choose **Plasma** to return. Save work before logging out. Super means the Windows/logo key. The configuration uses `#` for comments, `set` to define a variable, and `bindsym` to connect a key combination to a command. `exec` launches a program. Edit either the repository file or its symlink: they refer to the same file. Use Super+Shift+C to reload after editing.
 
-Choose **niri** at the login screen to test it; choose **Plasma** there to return to KDE. Save your work before logging out. The configuration has been syntax-validated, but the session and applications still need an interactive test.
+- Super+T: Konsole; Super+D: Wofi; Super+E: Dolphin; Super+B: Firefox.
+- Super+N: connection editor; Super+A: pavucontrol. The editor manages saved connections; it is not a network tray applet.
+- Super+arrows: focus a window; add Shift to move it. Super+Q closes it.
+- Super+1–9 or 0: select workspace 1–10; add Shift to move the focused window there.
+- Super+H or Super+V: split the focused container horizontally or vertically for subsequent windows. Super+W selects tabs, Super+S stacking, and Super+Shift+S returns to split layout.
+- Super+F toggles fullscreen; Super+Shift+Space toggles floating. Hold Super while dragging with the left mouse button to move, or the right button to resize.
+- Super+Shift+E asks before logging out. The top bar shows workspaces and the date/time.
 
-Edit `niri/config.kdl` in this repository (or the linked `~/.config/niri/config.kdl`); both paths refer to the same file. Comments next to the settings explain each line. Niri watches its config and normally reloads changes automatically. Check syntax with:
+This starter does not configure a screen locker, idle handling, notifications, wallpaper, audio keys, or portal integration. Test the session and decide which features to add next.
 
-```sh
-niri validate -c ~/Programs/dotfiles/niri/config.kdl
-```
+## Reproduce
 
-The config uses KDL: `//` starts a comment, `{ ... }` groups settings or an action, and quoted text is a string. `Mod` is the Super/Windows key in a normal session (Alt in a nested niri window). The `layout` block controls gaps and initial column width. The `binds` block maps each key combination to the action in braces; `spawn` starts the named program, with each argument quoted separately. `repeat=false` prevents repeated actions when holding the key. Settings not listed use niri's defaults.
-
-Useful starter shortcuts (all use Super unless stated otherwise):
-
-- `T`: Konsole; `D`: Wofi app launcher; `E`: Dolphin; `B`: Firefox.
-- `N`: NetworkManager connection editor; `A`: pavucontrol.
-- Arrow keys: focus windows or columns; Ctrl + left/right: move a column.
-- Page Up/Down: switch workspaces; `O`: overview; `Q`: close window.
-- `R`: change column width; `F`: maximize column; Shift + `F`: fullscreen; `V`: toggle floating.
-- Shift + `/`: shortcut overlay; Print: screenshot; Shift + `E`: logout confirmation.
-
-The connection editor manages saved connections; it is not a network tray applet. A bar, notifications, screen locking, wallpaper, audio keys, portals, and other session integration have not yet been configured or tested.
-
-## Reproduce on another machine
-
-Install niri, Konsole, Dolphin, Wofi, NetworkManager, `nm-connection-editor`, and pavucontrol using the target distribution's packages. Ensure NetworkManager is enabled and running according to that distribution's instructions. Package names may differ.
-
-Clone this repository and inspect any existing config before linking. If `~/.config/niri/config.kdl` already exists, back it up first. From the repository root, create the link only when that destination is absent:
+Install Sway, Konsole, Dolphin, Firefox, Wofi, NetworkManager, the NetworkManager connection editor, and pavucontrol using your distribution's packages. Ensure NetworkManager is running. Package names may differ. Clone the repository, then from its root:
 
 ```sh
-mkdir -p ~/.config/niri
-ln -s "$PWD/niri/config.kdl" ~/.config/niri/config.kdl
-niri validate -c ~/.config/niri/config.kdl
+sway --validate --config "$PWD/sway/config"
+mkdir -p ~/.config/sway
+ln -s "$PWD/sway/config" ~/.config/sway/config
 ```
 
-The link uses the clone's absolute path, so recreate it if the repository moves. Review the config and test the niri session before relying on it.
-
-## Principles and next steps
-
-- Preserve KDE as a fallback while testing niri.
-- Track selected configuration deliberately, and back up existing files before replacing them with links.
-- Keep credentials, NetworkManager connection profiles, and other secrets out of Git.
-- Test the starter session and decide which desktop features to add next; document and commit each working milestone.
+Inspect and back up an existing `~/.config/sway/config` before linking; do not overwrite it blindly. The link uses the clone's absolute path, so recreate it if the repository moves. Keep credentials and NetworkManager connection profiles out of Git.

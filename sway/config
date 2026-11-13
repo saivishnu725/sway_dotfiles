@@ -1,0 +1,66 @@
+# Lines beginning with # explain the configuration.
+# Mod4 is the Super/Windows key; Mod1 would be Alt.
+set $mod Mod4
+
+# bindsym maps a key combination to a command; exec starts a program.
+bindsym $mod+t exec konsole                 # KDE terminal
+bindsym $mod+d exec wofi --show drun        # Application launcher
+bindsym $mod+e exec dolphin                 # KDE file manager
+bindsym $mod+b exec firefox                 # Browser
+bindsym $mod+n exec nm-connection-editor    # Network connection editor
+bindsym $mod+a exec pavucontrol             # Audio controls
+
+# Close a window, reload this file, or confirm before exiting Sway.
+bindsym $mod+q kill
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit Sway and end this session?' -B 'Yes, exit Sway' 'swaymsg exit'
+bindsym $mod+f fullscreen toggle             # Toggle fullscreen.
+bindsym $mod+Shift+space floating toggle     # Toggle floating mode.
+# Hold Super and drag with left mouse to move or right mouse to resize.
+floating_modifier $mod normal
+
+# Arrow keys change focus; adding Shift moves the focused window.
+bindsym $mod+Left focus left
+bindsym $mod+Right focus right
+bindsym $mod+Up focus up
+bindsym $mod+Down focus down
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Down move down
+
+# Set the split direction for new windows: horizontal or vertical.
+bindsym $mod+h splith
+bindsym $mod+v splitv
+# Choose tabbed, stacked, or split display for the focused container.
+bindsym $mod+w layout tabbed
+bindsym $mod+s layout stacking
+bindsym $mod+Shift+s layout toggle split
+
+# Select workspaces 1–10; add Shift to move the focused window there.
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+# Show workspace buttons and a clock in a bar at the top of the screen.
+bar {
+    position top
+    status_command while date +'%Y-%m-%d %H:%M:%S'; do sleep 1; done
+}
