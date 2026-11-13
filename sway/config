@@ -21,6 +21,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit Sway and end this session?' -B 'Yes, exit Sway' 'swaymsg exit'
 bindsym $mod+f fullscreen toggle             # Toggle fullscreen.
 bindsym $mod+Shift+space floating toggle     # Toggle floating mode.
+bindsym $mod+Shift+f floating toggle         # Alternative floating shortcut.
 # Hold Super and drag with left mouse to move or right mouse to resize.
 floating_modifier $mod normal
 

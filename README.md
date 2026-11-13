@@ -21,7 +21,7 @@ Choose **Sway** at the login screen; choose **Plasma** to return. Save work befo
 - Super+arrows: focus a window; add Shift to move it. Super+Q closes it.
 - Super+1–9 or 0: select workspace 1–10; add Shift to move the focused window there.
 - Super+H or Super+V: split the focused container horizontally or vertically for subsequent windows. Super+W selects tabs, Super+S stacking, and Super+Shift+S returns to split layout.
-- Super+F toggles fullscreen; Super+Shift+Space toggles floating. Hold Super while dragging with the left mouse button to move, or the right button to resize.
+- Super+F toggles fullscreen; Super+Shift+F or Super+Shift+Space toggles floating. Hold Super while dragging with the left mouse button to move, or the right button to resize.
 - Super+Shift+E asks before logging out. The top bar shows workspaces and the date/time; click the clock to open Calindori as a floating calendar window.
 
 The clock uses [sway/clock.py](sway/clock.py): it sends the time to swaybar and launches Calindori on a left click. The `for_window` rule in the Sway config requests a 500 × 600 floating window; adjust those numbers to change its size. The rule depends on Calindori reporting `org.kde.calindori` as its Wayland app ID and should be checked in the session.
