@@ -24,6 +24,7 @@ Choose **Sway** at the login screen; choose **Plasma** to return. Save work befo
 - Super+H or Super+V: split the focused container horizontally or vertically for subsequent windows. Super+W selects tabs, Super+S stacking, and Super+Shift+S returns to split layout.
 - Super+F toggles fullscreen; Super+Shift+F or Super+Shift+Space toggles floating. Hold Super while dragging with the left mouse button to move, or the right button to resize.
 - Super+Escape or Lock in the [Power] menu starts swaylock.
+- Click the battery indicator at the far right for battery status, an estimated remaining or charging time when UPower provides one, and available power profiles. Select Battery saver, Balanced, or Performance to change it; unavailable profiles are omitted. Estimates vary with load and may be unavailable.
 - The [Power] panel button opens a menu for lock, logout, reboot, and shutdown; logout, reboot, and shutdown ask for confirmation.
 - Super+Shift+E asks before logging out. The top bar shows workspaces and the date/time; click the clock to open Calindori as a floating calendar window.
 - The panel shows CPU usage, RAM usage, and download/upload rates to the left of Mute. The panel refreshes every two seconds, and CPU is sampled over that interval; RAM uses total minus available memory. Network rates sum all non-loopback interfaces, including VPNs and virtual interfaces, so traffic can be counted more than once. Rates are bytes per second (KiB/s or MiB/s).
@@ -49,7 +50,7 @@ This starter does not configure idle handling. Test the session and decide which
 
 ## Reproduce
 
-Install Sway, COSMIC Terminal, Dolphin, Firefox, Wofi, NetworkManager, the NetworkManager connection editor, Kalk, pavucontrol, Calindori, swaylock, Mako, libnotify, WirePlumber, playerctl, swaybg, xdg-desktop-portal, xdg-desktop-portal-gtk, and Python 3 using your distribution's packages. Ensure NetworkManager is running. Package names may differ. Clone the repository, then from its root:
+Install Sway, COSMIC Terminal, Dolphin, Firefox, Wofi, NetworkManager, the NetworkManager connection editor, Kalk, pavucontrol, Calindori, swaylock, Mako, libnotify, WirePlumber, playerctl, swaybg, upower, power-profiles-daemon, xdg-desktop-portal, xdg-desktop-portal-gtk, and Python 3 using your distribution's packages. Ensure NetworkManager is running. Package names may differ. Clone the repository, then from its root:
 
 ```sh
 sway --validate --config "$PWD/sway/config"
@@ -57,10 +58,11 @@ mkdir -p ~/.config/sway ~/.config/mako
 ln -s "$PWD/sway/config" ~/.config/sway/config
 ln -s "$PWD/sway/clock.py" ~/.config/sway/clock.py
 ln -s "$PWD/sway/audio.py" ~/.config/sway/audio.py
+ln -s "$PWD/sway/battery.py" ~/.config/sway/battery.py
 ln -s "$PWD/sway/wallpaper.py" ~/.config/sway/wallpaper.py
 ln -s "$PWD/mako/config" ~/.config/mako/config
 ```
 
-Inspect and back up existing `~/.config/sway/config`, `~/.config/sway/clock.py`, `~/.config/sway/audio.py`, `~/.config/sway/wallpaper.py`, and `~/.config/mako/config` files before linking; do not overwrite it blindly. The link uses the clone's absolute path, so recreate it if the repository moves. Keep credentials and NetworkManager connection profiles out of Git.
+Inspect and back up existing `~/.config/sway/config`, `~/.config/sway/clock.py`, `~/.config/sway/audio.py`, `~/.config/sway/battery.py`, `~/.config/sway/wallpaper.py`, and `~/.config/mako/config` files before linking; do not overwrite it blindly. The link uses the clone's absolute path, so recreate it if the repository moves. Keep credentials and NetworkManager connection profiles out of Git.
 
 A searchable shortcut overview is planned for later, once the main setup is mostly complete.

@@ -25,6 +25,7 @@ def handle_clicks():
         # Each named panel block maps to a command and its arguments.
         commands = {
             'clock': ['calindori'],
+            'battery': [sys.executable, str(Path.home() / '.config/sway/battery.py')],
             'power': ['sh', '-c', "choice=$(printf 'Lock\nLogout\nReboot\nShutdown\n' | wofi --dmenu --prompt Power); case \"$choice\" in Lock) swaylock ;; Logout) swaynag -t warning -m 'Log out of Sway?' -B 'Logout' 'swaymsg exit' ;; Reboot) swaynag -t warning -m 'Reboot this computer?' -B 'Reboot' 'systemctl reboot' ;; Shutdown) swaynag -t warning -m 'Shut down this computer?' -B 'Shutdown' 'systemctl poweroff' ;; esac"],
             'mute': [sys.executable, '-u', str(Path.home() / '.config/sway/audio.py'), 'mute'],
             'previous': ['playerctl', 'previous'],
@@ -102,6 +103,19 @@ while True:
         {'name': 'next', 'full_text': '[Next]'},
         {'name': 'power', 'full_text': '[Power]'},
     ]
-    print(json.dumps([vitals, *controls, clock]) + ',', flush=True)
+    # Read the first present battery's percentage and charging state from sysfs.
+    battery_text = 'Battery --'
+    for battery in sorted(Path('/sys/class/power_supply').glob('*')):
+        try:
+            if (battery / 'type').read_text().strip() != 'Battery':
+                continue
+            capacity = (battery / 'capacity').read_text().strip()
+            state = (battery / 'status').read_text().strip()
+            battery_text = f'Battery {capacity}% ({state})'
+            break
+        except OSError:
+            continue
+    battery_block = {'name': 'battery', 'full_text': battery_text}
+    print(json.dumps([vitals, *controls, clock, battery_block]) + ',', flush=True)
     # Refresh the panel every two seconds.
     time.sleep(2)
