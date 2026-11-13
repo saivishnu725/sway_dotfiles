@@ -44,7 +44,7 @@ Hardware volume-up, volume-down, speaker-mute, and microphone-mute keys use `wpc
 
 ### Wallpaper rotation
 
-[sway/wallpaper.py](sway/wallpaper.py) cycles through image files in `~/Pictures/Wallpaper` in filename order every 15 minutes (900 seconds), using Sway's `fill` mode. Change `DIRECTORY` or `INTERVAL_SECONDS` in the script to customize it. It rescans the folder on each change; if the folder is empty, it waits and checks again. The images themselves remain outside this repository.
+[sway/wallpaper.py](sway/wallpaper.py) cycles through image files in `~/Pictures/Wallpaper` in filename order every 15 minutes (900 seconds), using swaybg's `fill` mode. The background renderer stays running across Sway config reloads. Change `DIRECTORY` or `INTERVAL_SECONDS` in the script to customize it. It rescans the folder on each change; if the folder is empty, it waits and checks again. The images themselves remain outside this repository.
 
 Install the required background renderer on CachyOS with `sudo pacman -S swaybg`. The script starts once when Sway starts; after installing swaybg, log out and back into Sway to start it. For a single fixed wallpaper, leave just one image in the folder. Rotation needs an interactive test.
 

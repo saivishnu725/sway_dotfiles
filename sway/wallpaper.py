@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""Rotate wallpapers in a directory using Sway's output background command."""
-import json
+"""Rotate wallpapers in a directory using a persistent swaybg process."""
 from pathlib import Path
 import subprocess
 import sys
@@ -12,6 +11,7 @@ INTERVAL_SECONDS = 900
 EXTENSIONS = {'.jpg', '.jpeg', '.png', '.webp', '.bmp'}
 
 index = 0
+background = None
 while True:
     # Re-read the folder each time, so added and removed images are picked up.
     try:
@@ -23,11 +23,18 @@ while True:
         images = []
     if images:
         image = images[index % len(images)]
-        # Quote the path for Sway, including paths with spaces or quotes.
-        command = f'output * bg {json.dumps(str(image), ensure_ascii=False)} fill'
+        # Start the new background before stopping the old one to avoid flicker.
         try:
-            subprocess.run(['swaymsg', command], check=True, stdout=subprocess.DEVNULL)
-        except (OSError, subprocess.CalledProcessError) as error:
-            print(f'Could not set wallpaper: {error}', file=sys.stderr)
+            new_background = subprocess.Popen(['swaybg', '-i', str(image), '-m', 'fill'])
+            time.sleep(1)
+            if new_background.poll() is None:
+                if background and background.poll() is None:
+                    background.terminate()
+                    background.wait()
+                background = new_background
+            else:
+                print(f'Could not display wallpaper: {image}', file=sys.stderr)
+        except OSError as error:
+            print(f'Could not start swaybg: {error}', file=sys.stderr)
         index += 1
     time.sleep(INTERVAL_SECONDS)
