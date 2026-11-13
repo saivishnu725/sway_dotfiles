@@ -48,7 +48,7 @@ Hardware volume-up, volume-down, speaker-mute, and microphone-mute keys use `wpc
 
 Install the required background renderer on CachyOS with `sudo pacman -S swaybg`. The script starts once when Sway starts; after installing swaybg, log out and back into Sway to start it. For a single fixed wallpaper, leave just one image in the folder. Rotation needs an interactive test.
 
-Sway includes `/etc/sway/config.d/*` for distribution session integration. On this CachyOS installation, it exports the Sway display and desktop to user services so the installed GTK portal can provide file dialogs. Log out and back in after adding it, then test an upload or Save As dialog. For screen sharing, the distribution Sway portal configuration selects `xdg-desktop-portal-wlr` for ScreenCast and Screenshot, while keeping GTK for file dialogs. Install the missing backend and selection tool on CachyOS with `sudo pacman -S xdg-desktop-portal-wlr slurp`, then log out and back into Sway. Test by sharing a screen in a Wayland-capable browser or application. This setup needs an interactive test; the wlroots portal generally shares an entire output rather than an individual window.
+Sway includes `/etc/sway/config.d/*` for distribution session integration. On this CachyOS installation, it exports the Sway display and desktop to user services so the installed GTK portal can provide file dialogs. Log out and back in after adding it, then test an upload or Save As dialog. For screen sharing, the distribution Sway portal configuration selects `xdg-desktop-portal-wlr` for ScreenCast and Screenshot, while keeping GTK for file dialogs. Install the missing backend and selection tool on CachyOS with `sudo pacman -S xdg-desktop-portal-wlr slurp`, then log out and back into Sway. Test by sharing a screen in a Wayland-capable browser or application. The installed portal supports screen and window selection. [xdg-desktop-portal-wlr/config](xdg-desktop-portal-wlr/config) uses Wofi to show available sources; the choices depend on what the requesting app supports. Restart the portal or log out and back in after changes. Some Discord builds may use their own capture interface and need separate troubleshooting.
 
 This starter does not configure idle handling. Test the session and decide which features to add next.
 
@@ -58,15 +58,16 @@ Install Sway, COSMIC Terminal, Dolphin, Firefox, Wofi, NetworkManager, the Netwo
 
 ```sh
 sway --validate --config "$PWD/sway/config"
-mkdir -p ~/.config/sway ~/.config/mako
+mkdir -p ~/.config/sway ~/.config/mako ~/.config/xdg-desktop-portal-wlr
 ln -s "$PWD/sway/config" ~/.config/sway/config
 ln -s "$PWD/sway/clock.py" ~/.config/sway/clock.py
 ln -s "$PWD/sway/audio.py" ~/.config/sway/audio.py
 ln -s "$PWD/sway/battery.py" ~/.config/sway/battery.py
 ln -s "$PWD/sway/wallpaper.py" ~/.config/sway/wallpaper.py
 ln -s "$PWD/mako/config" ~/.config/mako/config
+ln -s "$PWD/xdg-desktop-portal-wlr/config" ~/.config/xdg-desktop-portal-wlr/config
 ```
 
-Inspect and back up existing `~/.config/sway/config`, `~/.config/sway/clock.py`, `~/.config/sway/audio.py`, `~/.config/sway/battery.py`, `~/.config/sway/wallpaper.py`, and `~/.config/mako/config` files before linking; do not overwrite it blindly. The link uses the clone's absolute path, so recreate it if the repository moves. Keep credentials and NetworkManager connection profiles out of Git.
+Inspect and back up existing `~/.config/sway/config`, `~/.config/sway/clock.py`, `~/.config/sway/audio.py`, `~/.config/sway/battery.py`, `~/.config/sway/wallpaper.py`, `~/.config/mako/config`, and `~/.config/xdg-desktop-portal-wlr/config` files before linking; do not overwrite it blindly. The link uses the clone's absolute path, so recreate it if the repository moves. Keep credentials and NetworkManager connection profiles out of Git.
 
 A searchable shortcut overview is planned for later, once the main setup is mostly complete.
