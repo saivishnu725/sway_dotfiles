@@ -95,8 +95,6 @@ ln -s "$PWD/xdg-desktop-portal-wlr/config" ~/.config/xdg-desktop-portal-wlr/conf
 
 Inspect and back up existing `~/.config/sway/config`, `~/.config/sway/clock.py`, `~/.config/sway/audio.py`, `~/.config/sway/displays.py`, `~/.config/sway/shortcuts.py`, `~/.config/sway/screenshot.sh`, `~/.config/sway/battery.py`, `~/.config/sway/wallpaper.py`, `~/.config/mako/config`, `~/.config/swappy/config`, and `~/.config/xdg-desktop-portal-wlr/config` files before linking; do not overwrite it blindly. The link uses the clone's absolute path, so recreate it if the repository moves. Keep credentials and NetworkManager connection profiles out of Git.
 
-
-
 ## Zsh and Neovim
 
 `~/.zshrc` links to [zsh/zshrc](zsh/zshrc). The original was backed up beside it with a `.backup-<timestamp>` suffix. The Tailscale exit-node aliases live in the private `~/local_aliases.sh`, which the tracked file sources if present; it is not in Git. Shell history and `.zshenv` are also not tracked. Review backups before deleting them.
@@ -115,3 +113,9 @@ ln -s "$PWD/nvim/lazy-lock.json" ~/.config/nvim/lazy-lock.json
 ```
 
 Recreate `~/local_aliases.sh` separately for machine-specific aliases if needed. For example, use `alias tailexit="sudo tailscale set --exit-node=<your-node> --accept-routes"` and `alias tailexitno="sudo tailscale set --exit-node="`; replace `<your-node>` with your own node address. Never put shell history, credentials, or private local settings in Git.
+
+## License
+
+This project is licensed under the **GNU General Public License v2.0**.
+
+See the `LICENSE` file for details.
