@@ -2,8 +2,13 @@
 # Mod4 is the Super/Windows key; Mod1 would be Alt.
 set $mod Mod4
 
+# Tap the touchpad surface to click without pressing its physical button.
+input type:touchpad {
+    tap enabled
+}
+
 # bindsym maps a key combination to a command; exec starts a program.
-bindsym $mod+t exec konsole                 # KDE terminal
+bindsym $mod+t exec cosmic-term             # KDE terminal
 bindsym $mod+d exec wofi --show drun        # Application launcher
 bindsym $mod+e exec dolphin                 # KDE file manager
 bindsym $mod+b exec firefox                 # Browser
