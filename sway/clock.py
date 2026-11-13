@@ -103,4 +103,5 @@ while True:
         {'name': 'power', 'full_text': '[Power]'},
     ]
     print(json.dumps([vitals, *controls, clock]) + ',', flush=True)
-    time.sleep(1)
+    # Refresh the panel every two seconds.
+    time.sleep(2)
