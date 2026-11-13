@@ -22,15 +22,18 @@ Choose **Sway** at the login screen; choose **Plasma** to return. Save work befo
 - Super+1–9 or 0: select workspace 1–10; add Shift to move the focused window there.
 - Super+H or Super+V: split the focused container horizontally or vertically for subsequent windows. Super+W selects tabs, Super+S stacking, and Super+Shift+S returns to split layout.
 - Super+F toggles fullscreen; Super+Shift+F or Super+Shift+Space toggles floating. Hold Super while dragging with the left mouse button to move, or the right button to resize.
+- Super+Shift+L or the [Lock] button in the top bar starts swaylock. Install `swaylock` first; see below.
 - Super+Shift+E asks before logging out. The top bar shows workspaces and the date/time; click the clock to open Calindori as a floating calendar window.
 
 The clock uses [sway/clock.py](sway/clock.py): it sends the time to swaybar and launches Calindori on a left click. The `for_window` rule in the Sway config requests a 500 × 600 floating window; adjust those numbers to change its size. The rule depends on Calindori reporting `org.kde.calindori` as its Wayland app ID and should be checked in the session.
 
-This starter does not configure a screen locker, idle handling, notifications, wallpaper, audio keys, or portal integration. Test the session and decide which features to add next.
+Swaylock is configured for manual locking only; no idle or suspend locking is configured. It was not installed during setup because sudo requires a password. On CachyOS, install it with `sudo pacman -S swaylock`, reload Sway with Super+Shift+C, then test unlocking while you have another way to recover the session.
+
+This starter does not configure idle handling, notifications, wallpaper, audio keys, or portal integration. Test the session and decide which features to add next.
 
 ## Reproduce
 
-Install Sway, Konsole, Dolphin, Firefox, Wofi, NetworkManager, the NetworkManager connection editor, , pavucontrol, Calindori, and Python 3 using your distribution's packages. Ensure NetworkManager is running. Package names may differ. Clone the repository, then from its root:
+Install Sway, Konsole, Dolphin, Firefox, Wofi, NetworkManager, the NetworkManager connection editor, , pavucontrol, Calindori, swaylock, and Python 3 using your distribution's packages. Ensure NetworkManager is running. Package names may differ. Clone the repository, then from its root:
 
 ```sh
 sway --validate --config "$PWD/sway/config"

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Show a clickable clock in swaybar using its i3bar status protocol."""
+"""Show a clickable lock button and clock using the i3bar status protocol."""
 import datetime
 import json
 import subprocess
@@ -19,11 +19,15 @@ def handle_clicks():
         except json.JSONDecodeError:
             continue
         # Button 1 is the left mouse button (or a normal touchpad tap).
-        if event.get('name') == 'clock' and event.get('button') == 1:
+        if event.get('button') != 1:
+            continue
+        commands = {'clock': ['calindori'], 'lock': ['swaylock']}
+        command = commands.get(event.get('name'))
+        if command:
             try:
-                subprocess.Popen(['calindori'], start_new_session=True)
+                subprocess.Popen(command, start_new_session=True)
             except OSError as error:
-                print(f'Could not open Calindori: {error}', file=sys.stderr)
+                print(f'Could not launch {command[0]}: {error}', file=sys.stderr)
 
 
 # Announce the protocol and request click events, then start the status array.
@@ -33,5 +37,6 @@ threading.Thread(target=handle_clicks, daemon=True).start()
 while True:
     # A named block lets the click handler identify the clock.
     clock = {'name': 'clock', 'full_text': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
-    print(json.dumps([clock]) + ',', flush=True)
+    lock = {'name': 'lock', 'full_text': '[Lock]'}
+    print(json.dumps([lock, clock]) + ',', flush=True)
     time.sleep(1)

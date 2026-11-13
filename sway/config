@@ -21,6 +21,9 @@ bindsym $mod+n exec nm-connection-editor
 # Audio controls
 bindsym $mod+a exec pavucontrol
 
+# Lock the session manually (requires the swaylock package).
+bindsym $mod+Shift+l exec swaylock
+
 # Close a window, reload this file, or confirm before exiting Sway.
 bindsym $mod+q kill
 bindsym $mod+Shift+c reload
