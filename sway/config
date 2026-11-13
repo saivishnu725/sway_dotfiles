@@ -106,3 +106,6 @@ bar {
     # Run the repository clock script through the config symlink.
     status_command python3 ~/.config/sway/clock.py
 }
+
+# Load distribution session integration, including portal environment setup.
+include /etc/sway/config.d/*

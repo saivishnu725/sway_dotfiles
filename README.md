@@ -43,11 +43,13 @@ Hardware volume-up, volume-down, speaker-mute, and microphone-mute keys use `wpc
 
 Install the required background renderer on CachyOS with `sudo pacman -S swaybg`. The script starts once when Sway starts; after installing swaybg, log out and back into Sway to start it. For a single fixed wallpaper, leave just one image in the folder. Rotation needs an interactive test.
 
-This starter does not configure idle handling or portal integration. Test the session and decide which features to add next.
+Sway includes `/etc/sway/config.d/*` for distribution session integration. On this CachyOS installation, it exports the Sway display and desktop to user services so the installed GTK portal can provide file dialogs. Log out and back in after adding it, then test an upload or Save As dialog. Screen sharing has not yet been configured or tested.
+
+This starter does not configure idle handling. Test the session and decide which features to add next.
 
 ## Reproduce
 
-Install Sway, COSMIC Terminal, Dolphin, Firefox, Wofi, NetworkManager, the NetworkManager connection editor, Kalk, pavucontrol, Calindori, swaylock, Mako, libnotify, WirePlumber, playerctl, swaybg, and Python 3 using your distribution's packages. Ensure NetworkManager is running. Package names may differ. Clone the repository, then from its root:
+Install Sway, COSMIC Terminal, Dolphin, Firefox, Wofi, NetworkManager, the NetworkManager connection editor, Kalk, pavucontrol, Calindori, swaylock, Mako, libnotify, WirePlumber, playerctl, swaybg, xdg-desktop-portal, xdg-desktop-portal-gtk, and Python 3 using your distribution's packages. Ensure NetworkManager is running. Package names may differ. Clone the repository, then from its root:
 
 ```sh
 sway --validate --config "$PWD/sway/config"
