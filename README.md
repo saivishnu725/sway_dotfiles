@@ -14,7 +14,7 @@ A gradual, reproducible Sway desktop using KDE applications, NetworkManager, and
 
 Touchpad tap-to-click is enabled via `input type:touchpad` and `tap enabled` in the config. Change `enabled` to `disabled` to turn it off.
 
-Choose **Sway** at the login screen; choose **Plasma** to return. Save work before logging out. Super means the Windows/logo key. The configuration uses `#` for comments, `set` to define a variable, and `bindsym` to connect a key combination to a command. `exec` launches a program. Edit either the repository file or its symlink: they refer to the same file. Use Super+Shift+C to reload after editing.
+Choose **Sway** at the login screen; choose **Plasma** to return. Save work before logging out. Super means the Windows/logo key. The configuration uses separate lines beginning with `#` for comments, `set` to define a variable, and `bindsym` to connect a key combination to a command. `exec` launches a program. Edit either the repository file or its symlink: they refer to the same file. Use Super+Shift+C to reload after editing.
 
 - Super+T: Konsole; Super+D: Wofi; Super+E: Dolphin; Super+B: Firefox.
 - Super+N: connection editor; Super+A: pavucontrol. The editor manages saved connections; it is not a network tray applet.
