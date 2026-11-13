@@ -20,6 +20,7 @@ Touchpad tap-to-click is enabled via `input type:touchpad` and `tap enabled` in 
 
 Choose **Sway** at the login screen; choose **Plasma** to return. Save work before logging out. Super means the Windows/logo key. The configuration uses separate lines beginning with `#` for comments, `set` to define a variable, and `bindsym` to connect a key combination to a command. `exec` launches a program. Edit either the repository file or its symlink: they refer to the same file. Use Super+Shift+C to reload after editing.
 
+- Super+Shift+V opens searchable clipboard history; selecting an item copies it back to the clipboard for pasting. Install cliphist first as described below.
 - Super+T: COSMIC Terminal; Super+D: Wofi; Super+E: Dolphin; Super+B: Firefox.
 - The keyboard calculator key opens KDE Kalk in a floating window. This assumes the key reports `XF86Calculator` and Kalk reports `org.kde.kalk` as its Wayland app ID; test both in the session.
 - Super+S selects a screen region with Slurp, captures it with Grim, saves the original to `~/Pictures/Screenshots`, and opens Swappy for annotation, copying, or saving an edited version. Install Swappy on CachyOS with `sudo pacman -S swappy`; Grim and Slurp are also required. Swappy saves annotated images to `~/Pictures/Screenshots`; Copy places the image on the clipboard, and either action closes the editor. Test Copy by pasting into an image-capable app. Escape cancels selection. The shortcut replaces the old stacking shortcut, now Super+Ctrl+S. OBS Studio is installed for optional recording.
@@ -59,9 +60,13 @@ systemctl --user restart xdg-desktop-portal
 
 This starter does not configure idle handling. Test the session and decide which features to add next.
 
+## Clipboard history
+
+Install `cliphist` on CachyOS with `sudo pacman -S cliphist`, then log out and back into Sway to start the text and image watchers. Copy something and press Super+Shift+V to select it; paste normally afterward. Clipboard history is stored locally and can contain passwords or other sensitive copied data. Clear it with `cliphist wipe`; it does not clear your current clipboard. The watchers and shortcut are documented in `sway/config`.
+
 ## Reproduce
 
-Install Sway, COSMIC Terminal, Dolphin, Firefox, Wofi, NetworkManager, the NetworkManager connection editor, Kalk, Grim, Slurp, Swappy, wl-clipboard, pavucontrol, Calindori, swaylock, Mako, libnotify, WirePlumber, playerctl, swaybg, upower, power-profiles-daemon, xdg-desktop-portal, xdg-desktop-portal-gtk, xdg-desktop-portal-wlr, slurp, and Python 3 using your distribution's packages. Ensure NetworkManager is running. Package names may differ. Clone the repository, then from its root:
+Install Sway, COSMIC Terminal, Dolphin, Firefox, Wofi, NetworkManager, the NetworkManager connection editor, Kalk, Grim, Slurp, Swappy, wl-clipboard, cliphist, pavucontrol, Calindori, swaylock, Mako, libnotify, WirePlumber, playerctl, swaybg, upower, power-profiles-daemon, xdg-desktop-portal, xdg-desktop-portal-gtk, xdg-desktop-portal-wlr, slurp, and Python 3 using your distribution's packages. Ensure NetworkManager is running. Package names may differ. Clone the repository, then from its root:
 
 ```sh
 sway --validate --config "$PWD/sway/config"

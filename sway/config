@@ -38,6 +38,12 @@ bindsym --locked XF86AudioMicMute exec python3 ~/.config/sway/audio.py mic
 # Rotate images from ~/Pictures/Wallpaper every five minutes (requires swaybg).
 exec python3 ~/.config/sway/wallpaper.py
 
+# Record copied text and images in cliphist (requires the cliphist package).
+exec wl-paste --type text --watch cliphist store
+exec wl-paste --type image --watch cliphist store
+# Search history and copy the selected item back to the clipboard.
+bindsym $mod+Shift+v exec sh -c 'cliphist list | wofi --dmenu --prompt "Clipboard history" | cliphist decode | wl-copy'
+
 # Start the notification daemon once when the Sway session starts.
 exec mako
 
