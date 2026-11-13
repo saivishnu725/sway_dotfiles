@@ -13,7 +13,7 @@ bindsym $mod+t exec cosmic-term
 # Application launcher
 bindsym $mod+d exec wofi --show drun
 # KDE file manager
-bindsym $mod+e exec dolphin
+bindsym $mod+e exec env QT_QPA_PLATFORMTHEME=kde dolphin
 # Browser
 bindsym $mod+b exec firefox
 # Network connection editor
@@ -22,7 +22,7 @@ bindsym $mod+n exec nm-connection-editor
 bindsym $mod+a exec pavucontrol
 
 # Open KDE Kalk with the keyboard calculator key.
-bindsym XF86Calculator exec kalk
+bindsym XF86Calculator exec env QT_QPA_PLATFORMTHEME=kde kalk
 
 # Hardware audio keys control the default output through WirePlumber.
 # Each press changes volume by 5%; the increase is capped at 100%.
