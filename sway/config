@@ -21,6 +21,9 @@ bindsym $mod+n exec nm-connection-editor
 # Audio controls
 bindsym $mod+a exec pavucontrol
 
+# Start the notification daemon once when the Sway session starts.
+exec mako
+
 # Lock the session manually (requires the swaylock package).
 bindsym $mod+Shift+l exec swaylock
 

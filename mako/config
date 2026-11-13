@@ -1,0 +1,8 @@
+# Show notifications near the top-right corner of the screen.
+anchor=top-right
+# Dismiss ordinary notifications after 5 seconds (milliseconds).
+default-timeout=5000
+# Leave a small margin around notifications, in pixels.
+margin=10
+# Limit notification width, in pixels.
+width=350
