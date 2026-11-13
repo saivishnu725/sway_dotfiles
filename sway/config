@@ -21,6 +21,9 @@ bindsym $mod+n exec nm-connection-editor
 # Audio controls
 bindsym $mod+a exec pavucontrol
 
+# Open KDE Kalk with the keyboard calculator key.
+bindsym XF86Calculator exec kalk
+
 # Hardware audio keys control the default output through WirePlumber.
 # Each press changes volume by 5%; the increase is capped at 100%.
 bindsym --locked XF86AudioRaiseVolume exec python3 ~/.config/sway/audio.py up
@@ -90,6 +93,9 @@ bindsym $mod+Shift+7 move container to workspace number 7
 bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
+
+# Open KDE Kalk as a floating window when its Wayland app ID matches.
+for_window [app_id="org.kde.kalk"] floating enable
 
 # Open Calindori as a compact floating window when its Wayland app ID matches.
 for_window [app_id="org.kde.calindori"] floating enable, resize set 500 600

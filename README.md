@@ -17,6 +17,7 @@ Touchpad tap-to-click is enabled via `input type:touchpad` and `tap enabled` in 
 Choose **Sway** at the login screen; choose **Plasma** to return. Save work before logging out. Super means the Windows/logo key. The configuration uses separate lines beginning with `#` for comments, `set` to define a variable, and `bindsym` to connect a key combination to a command. `exec` launches a program. Edit either the repository file or its symlink: they refer to the same file. Use Super+Shift+C to reload after editing.
 
 - Super+T: COSMIC Terminal; Super+D: Wofi; Super+E: Dolphin; Super+B: Firefox.
+- The keyboard calculator key opens KDE Kalk in a floating window. This assumes the key reports `XF86Calculator` and Kalk reports `org.kde.kalk` as its Wayland app ID; test both in the session.
 - Super+N: connection editor; Super+A: pavucontrol. The editor manages saved connections; it is not a network tray applet.
 - Super+arrows: focus a window; add Shift to move it. Super+Q closes it.
 - Super+1–9 or 0: select workspace 1–10; add Shift to move the focused window there.
@@ -36,7 +37,7 @@ Hardware volume-up, volume-down, speaker-mute, and microphone-mute keys use `wpc
 
 ### Wallpaper rotation
 
-[sway/wallpaper.py](sway/wallpaper.py) cycles through image files in `~/Pictures/Wallpaper` in filename order every five minutes, using Sway's `fill` mode. Change `DIRECTORY` or `INTERVAL_SECONDS` in the script to customize it. It rescans the folder on each change; if the folder is empty, it waits and checks again. The images themselves remain outside this repository.
+[sway/wallpaper.py](sway/wallpaper.py) cycles through image files in `~/Pictures/Wallpaper` in filename order every 15 minutes (900 seconds), using Sway's `fill` mode. Change `DIRECTORY` or `INTERVAL_SECONDS` in the script to customize it. It rescans the folder on each change; if the folder is empty, it waits and checks again. The images themselves remain outside this repository.
 
 Install the required background renderer on CachyOS with `sudo pacman -S swaybg`. The script starts once when Sway starts; after installing swaybg, log out and back into Sway to start it. For a single fixed wallpaper, leave just one image in the folder. Rotation needs an interactive test.
 
@@ -44,7 +45,7 @@ This starter does not configure idle handling or portal integration. Test the se
 
 ## Reproduce
 
-Install Sway, COSMIC Terminal, Dolphin, Firefox, Wofi, NetworkManager, the NetworkManager connection editor, pavucontrol, Calindori, swaylock, Mako, libnotify, WirePlumber, playerctl, swaybg, and Python 3 using your distribution's packages. Ensure NetworkManager is running. Package names may differ. Clone the repository, then from its root:
+Install Sway, COSMIC Terminal, Dolphin, Firefox, Wofi, NetworkManager, the NetworkManager connection editor, Kalk, pavucontrol, Calindori, swaylock, Mako, libnotify, WirePlumber, playerctl, swaybg, and Python 3 using your distribution's packages. Ensure NetworkManager is running. Package names may differ. Clone the repository, then from its root:
 
 ```sh
 sway --validate --config "$PWD/sway/config"
