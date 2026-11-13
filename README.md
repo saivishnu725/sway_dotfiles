@@ -34,11 +34,17 @@ Notifications use Mako, configured in [mako/config](mako/config) and started by 
 
 Hardware volume-up, volume-down, speaker-mute, and microphone-mute keys use `wpctl` from WirePlumber. Volume changes in 5% steps and increases are capped at 100%. These bindings also work while locked. Each hardware-key action shows the resulting level or mute state through [sway/audio.py](sway/audio.py); Mako groups these notifications and dismisses them after 1.5 seconds. Changes made directly in other applications do not invoke this helper. Reload Sway with Super+Shift+C after editing them; use pavucontrol (Super+A) for detailed audio settings. Test the keys on your keyboard.
 
-This starter does not configure idle handling, wallpaper, or portal integration. Test the session and decide which features to add next.
+### Wallpaper rotation
+
+[sway/wallpaper.py](sway/wallpaper.py) cycles through image files in `~/Pictures/Wallpaper` in filename order every five minutes, using Sway's `fill` mode. Change `DIRECTORY` or `INTERVAL_SECONDS` in the script to customize it. It rescans the folder on each change; if the folder is empty, it waits and checks again. The images themselves remain outside this repository.
+
+Install the required background renderer on CachyOS with `sudo pacman -S swaybg`. The script starts once when Sway starts; after installing swaybg, log out and back into Sway to start it. For a single fixed wallpaper, leave just one image in the folder. Rotation needs an interactive test.
+
+This starter does not configure idle handling or portal integration. Test the session and decide which features to add next.
 
 ## Reproduce
 
-Install Sway, COSMIC Terminal, Dolphin, Firefox, Wofi, NetworkManager, the NetworkManager connection editor, pavucontrol, Calindori, swaylock, Mako, libnotify, WirePlumber, playerctl, and Python 3 using your distribution's packages. Ensure NetworkManager is running. Package names may differ. Clone the repository, then from its root:
+Install Sway, COSMIC Terminal, Dolphin, Firefox, Wofi, NetworkManager, the NetworkManager connection editor, pavucontrol, Calindori, swaylock, Mako, libnotify, WirePlumber, playerctl, swaybg, and Python 3 using your distribution's packages. Ensure NetworkManager is running. Package names may differ. Clone the repository, then from its root:
 
 ```sh
 sway --validate --config "$PWD/sway/config"
@@ -46,9 +52,10 @@ mkdir -p ~/.config/sway ~/.config/mako
 ln -s "$PWD/sway/config" ~/.config/sway/config
 ln -s "$PWD/sway/clock.py" ~/.config/sway/clock.py
 ln -s "$PWD/sway/audio.py" ~/.config/sway/audio.py
+ln -s "$PWD/sway/wallpaper.py" ~/.config/sway/wallpaper.py
 ln -s "$PWD/mako/config" ~/.config/mako/config
 ```
 
-Inspect and back up existing `~/.config/sway/config`, `~/.config/sway/clock.py`, `~/.config/sway/audio.py`, and `~/.config/mako/config` files before linking; do not overwrite it blindly. The link uses the clone's absolute path, so recreate it if the repository moves. Keep credentials and NetworkManager connection profiles out of Git.
+Inspect and back up existing `~/.config/sway/config`, `~/.config/sway/clock.py`, `~/.config/sway/audio.py`, `~/.config/sway/wallpaper.py`, and `~/.config/mako/config` files before linking; do not overwrite it blindly. The link uses the clone's absolute path, so recreate it if the repository moves. Keep credentials and NetworkManager connection profiles out of Git.
 
 A searchable shortcut overview is planned for later, once the main setup is mostly complete.
