@@ -24,8 +24,9 @@ Choose **Sway** at the login screen; choose **Plasma** to return. Save work befo
 - Super+F toggles fullscreen; Super+Shift+F or Super+Shift+Space toggles floating. Hold Super while dragging with the left mouse button to move, or the right button to resize.
 - Super+Shift+L or the [Lock] button in the top bar starts swaylock.
 - Super+Shift+E asks before logging out. The top bar shows workspaces and the date/time; click the clock to open Calindori as a floating calendar window.
+- Panel buttons **Mute**, **Prev**, **Play/Pause**, and **Next** control the default audio output and MPRIS-compatible media players. Prev and Next change tracks; they do not seek within a track.
 
-The clock uses [sway/clock.py](sway/clock.py): it sends the time to swaybar and launches Calindori on a left click. The `for_window` rule in the Sway config requests a 500 × 600 floating window; adjust those numbers to change its size. The rule depends on Calindori reporting `org.kde.calindori` as its Wayland app ID and should be checked in the session.
+The clock uses [sway/clock.py](sway/clock.py): it sends the time and buttons to swaybar and launches commands on a left click. The media buttons use `playerctl`; Mute uses the same audio helper as the keyboard key. If multiple players are open, playerctl chooses an available player. The `for_window` rule in the Sway config requests a 500 × 600 floating window; adjust those numbers to change its size. The rule depends on Calindori reporting `org.kde.calindori` as its Wayland app ID and should be checked in the session.
 
 Swaylock is installed and manual locking has been tested. No idle or suspend locking is configured.
 
@@ -37,7 +38,7 @@ This starter does not configure idle handling, wallpaper, or portal integration.
 
 ## Reproduce
 
-Install Sway, COSMIC Terminal, Dolphin, Firefox, Wofi, NetworkManager, the NetworkManager connection editor, pavucontrol, Calindori, swaylock, Mako, libnotify, WirePlumber, and Python 3 using your distribution's packages. Ensure NetworkManager is running. Package names may differ. Clone the repository, then from its root:
+Install Sway, COSMIC Terminal, Dolphin, Firefox, Wofi, NetworkManager, the NetworkManager connection editor, pavucontrol, Calindori, swaylock, Mako, libnotify, WirePlumber, playerctl, and Python 3 using your distribution's packages. Ensure NetworkManager is running. Package names may differ. Clone the repository, then from its root:
 
 ```sh
 sway --validate --config "$PWD/sway/config"

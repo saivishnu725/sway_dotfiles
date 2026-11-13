@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Show a clickable lock button and clock using the i3bar status protocol."""
+"""Show clickable desktop controls and a clock using the i3bar status protocol."""
 import datetime
 import json
+from pathlib import Path
 import subprocess
 import sys
 import threading
@@ -21,7 +22,15 @@ def handle_clicks():
         # Button 1 is the left mouse button (or a normal touchpad tap).
         if event.get('button') != 1:
             continue
-        commands = {'clock': ['calindori'], 'lock': ['swaylock']}
+        # Each named panel block maps to a command and its arguments.
+        commands = {
+            'clock': ['calindori'],
+            'lock': ['swaylock'],
+            'mute': [sys.executable, '-u', str(Path.home() / '.config/sway/audio.py'), 'mute'],
+            'previous': ['playerctl', 'previous'],
+            'play': ['playerctl', 'play-pause'],
+            'next': ['playerctl', 'next'],
+        }
         command = commands.get(event.get('name'))
         if command:
             try:
@@ -37,6 +46,13 @@ threading.Thread(target=handle_clicks, daemon=True).start()
 while True:
     # A named block lets the click handler identify the clock.
     clock = {'name': 'clock', 'full_text': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
-    lock = {'name': 'lock', 'full_text': '[Lock]'}
-    print(json.dumps([lock, clock]) + ',', flush=True)
+    # Labels are kept as text so they work without a special icon font.
+    controls = [
+        {'name': 'mute', 'full_text': '[Mute]'},
+        {'name': 'previous', 'full_text': '[Prev]'},
+        {'name': 'play', 'full_text': '[Play/Pause]'},
+        {'name': 'next', 'full_text': '[Next]'},
+        {'name': 'lock', 'full_text': '[Lock]'},
+    ]
+    print(json.dumps([*controls, clock]) + ',', flush=True)
     time.sleep(1)
