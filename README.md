@@ -26,7 +26,7 @@ The config uses KDL: `//` starts a comment, `{ ... }` groups settings or an acti
 
 Useful starter shortcuts (all use Super unless stated otherwise):
 
-- `T`: Konsole; `D`: Wofi app launcher; `E`: Dolphin.
+- `T`: Konsole; `D`: Wofi app launcher; `E`: Dolphin; `B`: Firefox.
 - `N`: NetworkManager connection editor; `A`: pavucontrol.
 - Arrow keys: focus windows or columns; Ctrl + left/right: move a column.
 - Page Up/Down: switch workspaces; `O`: overview; `Q`: close window.

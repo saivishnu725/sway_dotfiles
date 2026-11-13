@@ -13,26 +13,27 @@ layout {
 // niri window it is Alt. spawn runs an executable with separate arguments.
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; } // Show the available shortcuts.
-    Mod+T { spawn "konsole"; }              // Open the KDE terminal.
-    Mod+D { spawn "wofi" "--show" "drun"; } // Open the application launcher.
-    Mod+E { spawn "dolphin"; }              // Open the KDE file manager.
-    Mod+N { spawn "nm-connection-editor"; } // Edit NetworkManager connections.
+    Mod+T { spawn "cosmic-term"; }           // Open the terminal.
+    Mod+D { spawn "wofi" "--show" "drun"; }  // Open the application launcher.
+    Mod+B { spawn "firefox"; }              // Open the Firefox browser.
+    Mod+E { spawn "dolphin"; }               // Open the KDE file manager.
+    Mod+N { spawn "nm-connection-editor"; }  // Edit NetworkManager connections.
     Mod+A { spawn "pavucontrol"; }           // Open audio controls.
 
     Mod+Q repeat=false { close-window; }     // Close the focused window once.
     Mod+O repeat=false { toggle-overview; }  // Show or hide the workspace overview.
-    Mod+Left { focus-column-left; }         // Focus the column to the left.
-    Mod+Right { focus-column-right; }       // Focus the column to the right.
-    Mod+Up { focus-window-up; }             // Focus the window above.
-    Mod+Down { focus-window-down; }         // Focus the window below.
-    Mod+Ctrl+Left { move-column-left; }     // Move the current column left.
-    Mod+Ctrl+Right { move-column-right; }   // Move the current column right.
-    Mod+Page_Up { focus-workspace-up; }     // Switch to the workspace above.
-    Mod+Page_Down { focus-workspace-down; } // Switch to the workspace below.
-    Mod+R { switch-preset-column-width; }  // Cycle through niri's default widths.
-    Mod+F { maximize-column; }              // Toggle the column's maximum width.
-    Mod+Shift+F { fullscreen-window; }      // Toggle full screen for the window.
-    Mod+V { toggle-window-floating; }       // Toggle floating for the window.
-    Print { screenshot; }                   // Open niri's screenshot interface.
-    Mod+Shift+E { quit; }                   // Ask for confirmation before logging out.
+    Mod+Left { focus-column-left; }          // Focus the column to the left.
+    Mod+Right { focus-column-right; }        // Focus the column to the right.
+    Mod+Up { focus-window-up; }              // Focus the window above.
+    Mod+Down { focus-window-down; }          // Focus the window below.
+    Mod+Ctrl+Left { move-column-left; }      // Move the current column left.
+    Mod+Ctrl+Right { move-column-right; }    // Move the current column right.
+    Mod+Page_Up { focus-workspace-up; }      // Switch to the workspace above.
+    Mod+Page_Down { focus-workspace-down; }  // Switch to the workspace below.
+    Mod+R { switch-preset-column-width; }    // Cycle through niri's default widths.
+    Mod+F { maximize-column; }               // Toggle the column's maximum width.
+    Mod+Shift+F { fullscreen-window; }       // Toggle full screen for the window.
+    Mod+V { toggle-window-floating; }        // Toggle floating for the window.
+    Print { screenshot; }                    // Open niri's screenshot interface.
+    Mod+Shift+E { quit; }                    // Ask for confirmation before logging out.
 }
