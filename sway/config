@@ -21,6 +21,9 @@ bindsym $mod+n exec nm-connection-editor
 # Audio controls
 bindsym $mod+a exec pavucontrol
 
+# Open the external-display mode menu.
+bindsym $mod+p exec python3 ~/.config/sway/displays.py
+
 # Search the shortcuts listed in this Sway config.
 bindsym $mod+Shift+slash exec python3 ~/.config/sway/shortcuts.py
 

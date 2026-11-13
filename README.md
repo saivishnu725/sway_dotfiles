@@ -65,13 +65,17 @@ systemctl --user restart xdg-desktop-portal
 
 This starter does not configure idle handling. Test the session and decide which features to add next.
 
+## External displays
+
+Install `wl-mirror` and `wdisplays` on CachyOS with `sudo pacman -S wl-mirror wdisplays`. Press Super+P for Extend, Mirror laptop, Laptop only, External only, or graphical display settings. The menu detects the laptop screen and lets you choose an external output if more than one is present. Extend places the chosen display to the right; the two "only" modes disable the other selected display. Mirror uses a fullscreen `wl-mirror` window, not native hardware mirroring; choosing another menu mode stops the mirror started by this menu. These settings are temporary and have not yet been tested with a connected monitor or projector. The graphical settings tool can adjust resolution, scale, and arrangement. To inspect outputs manually, run `swaymsg -t get_outputs`. If a display becomes unusable, reconnect it or use `swaymsg output <name> enable` from a terminal.
+
 ## Clipboard history
 
 Install `cliphist` on CachyOS with `sudo pacman -S cliphist`, then log out and back into Sway to start the text and image watchers. Copy something and press Super+Shift+V to select it; paste normally afterward. Clipboard history is stored locally and can contain passwords or other sensitive copied data. Clear it with `cliphist wipe`; it does not clear your current clipboard. The watchers and shortcut are documented in `sway/config`.
 
 ## Reproduce
 
-Install Sway, COSMIC Terminal, Dolphin, Firefox, Wofi, NetworkManager, the NetworkManager connection editor, Kalk, Grim, Slurp, Swappy, wl-clipboard, cliphist, pavucontrol, Calindori, swaylock, Mako, libnotify, WirePlumber, playerctl, swaybg, upower, power-profiles-daemon, xdg-desktop-portal, xdg-desktop-portal-gtk, xdg-desktop-portal-wlr, slurp, and Python 3 using your distribution's packages. Ensure NetworkManager is running. Package names may differ. Clone the repository, then from its root:
+Install Sway, COSMIC Terminal, Dolphin, Firefox, Wofi, NetworkManager, the NetworkManager connection editor, Kalk, Grim, Slurp, Swappy, wl-clipboard, cliphist, pavucontrol, Calindori, swaylock, Mako, libnotify, WirePlumber, playerctl, swaybg, wl-mirror, wdisplays, upower, power-profiles-daemon, xdg-desktop-portal, xdg-desktop-portal-gtk, xdg-desktop-portal-wlr, slurp, and Python 3 using your distribution's packages. Ensure NetworkManager is running. Package names may differ. Clone the repository, then from its root:
 
 ```sh
 sway --validate --config "$PWD/sway/config"
@@ -79,6 +83,7 @@ mkdir -p ~/.config/sway ~/.config/mako ~/.config/swappy ~/.config/xdg-desktop-po
 ln -s "$PWD/sway/config" ~/.config/sway/config
 ln -s "$PWD/sway/clock.py" ~/.config/sway/clock.py
 ln -s "$PWD/sway/audio.py" ~/.config/sway/audio.py
+ln -s "$PWD/sway/displays.py" ~/.config/sway/displays.py
 ln -s "$PWD/sway/shortcuts.py" ~/.config/sway/shortcuts.py
 ln -s "$PWD/sway/screenshot.sh" ~/.config/sway/screenshot.sh
 ln -s "$PWD/sway/battery.py" ~/.config/sway/battery.py
@@ -88,6 +93,6 @@ ln -s "$PWD/swappy/config" ~/.config/swappy/config
 ln -s "$PWD/xdg-desktop-portal-wlr/config" ~/.config/xdg-desktop-portal-wlr/config
 ```
 
-Inspect and back up existing `~/.config/sway/config`, `~/.config/sway/clock.py`, `~/.config/sway/audio.py`, `~/.config/sway/shortcuts.py`, `~/.config/sway/screenshot.sh`, `~/.config/sway/battery.py`, `~/.config/sway/wallpaper.py`, `~/.config/mako/config`, `~/.config/swappy/config`, and `~/.config/xdg-desktop-portal-wlr/config` files before linking; do not overwrite it blindly. The link uses the clone's absolute path, so recreate it if the repository moves. Keep credentials and NetworkManager connection profiles out of Git.
+Inspect and back up existing `~/.config/sway/config`, `~/.config/sway/clock.py`, `~/.config/sway/audio.py`, `~/.config/sway/displays.py`, `~/.config/sway/shortcuts.py`, `~/.config/sway/screenshot.sh`, `~/.config/sway/battery.py`, `~/.config/sway/wallpaper.py`, `~/.config/mako/config`, `~/.config/swappy/config`, and `~/.config/xdg-desktop-portal-wlr/config` files before linking; do not overwrite it blindly. The link uses the clone's absolute path, so recreate it if the repository moves. Keep credentials and NetworkManager connection profiles out of Git.
 
 
