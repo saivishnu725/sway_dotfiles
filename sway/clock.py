@@ -36,7 +36,9 @@ def handle_clicks():
         command = commands.get(event.get('name'))
         if command:
             try:
-                subprocess.Popen(command, start_new_session=True)
+                # Child output must not corrupt swaybar’s JSON status stream.
+                subprocess.Popen(command, stdin=subprocess.DEVNULL,
+                                 stdout=subprocess.DEVNULL, start_new_session=True)
             except OSError as error:
                 print(f'Could not launch {command[0]}: {error}', file=sys.stderr)
 
