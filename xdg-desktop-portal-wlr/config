@@ -1,4 +1,4 @@
 [screencast]
 # Pass available screens and windows to Wofi as a selectable list.
 chooser_type=dmenu
-chooser_cmd=wofi --dmenu --prompt "Share screen or window"
+chooser_cmd=wofi --dmenu --insensitive --prompt "Share screen or window"

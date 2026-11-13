@@ -11,7 +11,7 @@ input type:touchpad {
 # KDE terminal
 bindsym $mod+t exec cosmic-term
 # Application launcher
-bindsym $mod+d exec wofi --show drun
+bindsym $mod+d exec wofi --insensitive --show drun
 # KDE file manager
 bindsym $mod+e exec env QT_QPA_PLATFORMTHEME=kde dolphin
 # Browser
@@ -48,7 +48,7 @@ exec python3 ~/.config/sway/wallpaper.py
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
 # Search history and copy the selected item back to the clipboard.
-bindsym $mod+Shift+v exec sh -c 'cliphist list | wofi --dmenu --prompt "Clipboard history" | cliphist decode | wl-copy'
+bindsym $mod+Shift+v exec sh -c 'cliphist list | wofi --dmenu --insensitive --prompt "Clipboard history" | cliphist decode | wl-copy'
 
 # Start the notification daemon once when the Sway session starts.
 exec mako

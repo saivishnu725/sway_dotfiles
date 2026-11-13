@@ -18,6 +18,8 @@ Dolphin, Kalk, and Calindori launched from the configured Sway shortcuts or cloc
 
 The focused window and active workspace use the muted rose accent `#B76E79`. Edit the `client.focused` and `focused_workspace` colors in `sway/config` to change it; app-specific themes are separate.
 
+Wofi searches are case-insensitive in the configured launcher and menus.
+
 ## Sway basics
 
 Touchpad tap-to-click is enabled via `input type:touchpad` and `tap enabled` in the config. Change `enabled` to `disabled` to turn it off.

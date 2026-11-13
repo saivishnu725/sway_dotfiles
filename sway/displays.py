@@ -10,7 +10,7 @@ import sys
 
 
 def choose(prompt, options):
-    result = subprocess.run(['wofi', '--dmenu', '--prompt', prompt],
+    result = subprocess.run(['wofi', '--dmenu', '--insensitive', '--prompt', prompt],
                             input='\n'.join(options), text=True, capture_output=True)
     return result.stdout.strip() if result.returncode == 0 else ''
 

@@ -27,7 +27,7 @@ try:
     lines = [f'Battery: {field("percentage") or "unavailable"} ({status})',
              f'{label}: {estimate}', f'Current: {names.get(active, active)}',
              *[names[profile] for profile in available]]
-    choice = subprocess.run(['wofi', '--dmenu', '--prompt', 'Battery / power profile'],
+    choice = subprocess.run(['wofi', '--dmenu', '--insensitive', '--prompt', 'Battery / power profile'],
                             input='\n'.join(lines), text=True, capture_output=True).stdout.strip()
     selected = next((profile for profile in available if names[profile] == choice), None)
     if selected:

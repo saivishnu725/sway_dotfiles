@@ -24,5 +24,5 @@ for line in config.read_text().splitlines():
     action = ' '.join(parts[index + 1:])
     entries.append(f'{keys}  —  {action}')
 # Selecting an entry simply closes the overview; it does not run the action.
-subprocess.run(['wofi', '--dmenu', '--prompt', 'Search shortcuts'],
+subprocess.run(['wofi', '--dmenu', '--insensitive', '--prompt', 'Search shortcuts'],
                input='\n'.join(entries), text=True, stdout=subprocess.DEVNULL, check=False)
