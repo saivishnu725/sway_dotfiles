@@ -1,0 +1,19 @@
+# Dracula background, with a visible rose-ringed password indicator.
+color=282a36
+indicator-idle-visible
+indicator-radius=90
+indicator-thickness=8
+inside-color=44475a
+ring-color=b76e79
+line-uses-inside
+separator-color=00000000
+text-color=f8f8f2
+key-hl-color=bd93f9
+bs-hl-color=ffb86c
+# Different ring colors show verification and incorrect-password states.
+ring-ver-color=8be9fd
+ring-wrong-color=ff5555
+inside-wrong-color=44475a
+text-wrong-color=f8f8f2
+show-failed-attempts
+indicator-caps-lock
