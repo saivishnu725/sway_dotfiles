@@ -1,19 +1,38 @@
 #!/usr/bin/env python3
-"""Rotate wallpapers in a directory using a persistent swaybg process."""
+"""Rotate wallpapers; --next advances the running session's rotation."""
+import os
 from pathlib import Path
+import signal
 import subprocess
 import sys
+import threading
 import time
 
 # Change this directory or interval (in seconds) to suit your preferences.
 DIRECTORY = Path.home() / 'Pictures' / 'Wallpaper'
 INTERVAL_SECONDS = 900
 EXTENSIONS = {'.jpg', '.jpeg', '.png', '.webp', '.bmp'}
+PID_FILE = Path(os.environ.get('XDG_RUNTIME_DIR', '/tmp')) / 'sway-wallpaper-rotation.pid'
 
+if sys.argv[1:] == ['--next']:
+    try:
+        pid = int(PID_FILE.read_text())
+        args = Path(f'/proc/{pid}/cmdline').read_bytes().split(b'\0')
+        if not any(Path(os.fsdecode(arg)).name == 'wallpaper.py' for arg in args):
+            raise ValueError('Wallpaper process no longer matches')
+        os.kill(pid, signal.SIGUSR1)
+    except (OSError, ValueError) as error:
+        subprocess.run(['notify-send', 'Wallpaper', 'Rotation is not running; log back into Sway.'], check=False)
+        sys.exit(f'Could not advance wallpaper: {error}')
+    sys.exit(0)
+
+# A signal wakes the existing timer; the next wait starts a fresh 15 minutes.
+advance = threading.Event()
+signal.signal(signal.SIGUSR1, lambda _signum, _frame: advance.set())
+PID_FILE.write_text(str(os.getpid()))
 index = 0
 background = None
 while True:
-    # Re-read the folder each time, so added and removed images are picked up.
     try:
         images = sorted((path for path in DIRECTORY.iterdir()
                          if path.is_file() and path.suffix.lower() in EXTENSIONS),
@@ -37,4 +56,5 @@ while True:
         except OSError as error:
             print(f'Could not start swaybg: {error}', file=sys.stderr)
         index += 1
-    time.sleep(INTERVAL_SECONDS)
+    advance.wait(INTERVAL_SECONDS)
+    advance.clear()
