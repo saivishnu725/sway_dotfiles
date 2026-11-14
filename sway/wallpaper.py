@@ -2,8 +2,6 @@
 """Rotate wallpapers in a directory using a persistent swaybg process."""
 from pathlib import Path
 import subprocess
-import signal
-import threading
 import sys
 import time
 
@@ -11,10 +9,6 @@ import time
 DIRECTORY = Path.home() / 'Pictures' / 'Wallpaper'
 INTERVAL_SECONDS = 900
 EXTENSIONS = {'.jpg', '.jpeg', '.png', '.webp', '.bmp'}
-
-# SIGUSR1 wakes the loop and resets the interval after the next image.
-advance = threading.Event()
-signal.signal(signal.SIGUSR1, lambda _signum, _frame: advance.set())
 
 index = 0
 background = None
@@ -43,5 +37,4 @@ while True:
         except OSError as error:
             print(f'Could not start swaybg: {error}', file=sys.stderr)
         index += 1
-    advance.wait(INTERVAL_SECONDS)
-    advance.clear()
+    time.sleep(INTERVAL_SECONDS)
