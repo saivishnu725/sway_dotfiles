@@ -12,7 +12,7 @@ A gradual, reproducible Sway desktop using KDE applications, NetworkManager, and
 
 ## KDE app appearance
 
-Dolphin, Kalk, and Calindori launched from the configured Sway shortcuts or clock button request the KDE Qt platform theme using `QT_QPA_PLATFORMTHEME=kde`. This is a limited experiment to see whether they pick up the existing Breeze Dark settings; applications launched elsewhere are unaffected. Reload Sway, close these apps fully, and reopen them to test. Remove `env QT_QPA_PLATFORMTHEME=kde` from the bindings (and the equivalent `env` arguments in `sway/clock.py`) to undo it.
+Dolphin, Kalk, and Calindori launched from the configured Sway shortcuts or clock button request the KDE Qt platform theme using `QT_QPA_PLATFORMTHEME=kde`. The shared KDE color scheme is set to Breeze Dark and automatic appearance switching was disabled after it changed the apps to Breeze Light. This is a limited setup; applications launched elsewhere are unaffected. Reload Sway, close these apps fully, and reopen them to test. Remove `env QT_QPA_PLATFORMTHEME=kde` from the bindings (and the equivalent `env` arguments in `sway/clock.py`) to undo it.
 
 ## Sway appearance
 
