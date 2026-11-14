@@ -57,7 +57,7 @@ bindsym $mod+Shift+v exec sh -c 'cliphist list | wofi --dmenu --insensitive --pr
 exec mako
 
 # Lock the session manually (requires the swaylock package).
-bindsym $mod+Escape exec swaylock
+bindsym $mod+Escape exec swaylock --image "$HOME/Pictures/Wallpaper/pepe landscape.jpg" --scaling fill
 
 # Close a window, reload this file, or confirm before exiting Sway.
 bindsym $mod+q kill

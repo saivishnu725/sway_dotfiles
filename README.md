@@ -46,7 +46,7 @@ Choose **Sway** at the login screen; choose **Plasma** to return. Save work befo
 
 The clock uses [sway/clock.py](sway/clock.py): it sends the time and buttons to swaybar and launches commands on a left click. The media buttons use `playerctl`; Mute uses the same audio helper as the keyboard key. If multiple players are open, playerctl chooses an available player. The `for_window` rule in the Sway config requests a 500 × 600 floating window; adjust those numbers to change its size. The rule depends on Calindori reporting `org.kde.calindori` as its Wayland app ID and should be checked in the session.
 
-Swaylock is installed and manual locking has been tested. [swaylock/config](swaylock/config) gives it a Dracula background and a visible rose password indicator; ring colors show verification and incorrect-password states. Test the theme with Super+Escape. No idle or suspend locking is configured.
+Swaylock is installed and manual locking has been tested. [swaylock/config](swaylock/config) gives it a fallback dark background and a visible rose password indicator. Both lock launchers use `~/Pictures/Wallpaper/pepe landscape.jpg` as the background, scaled to fill; change that path in both `sway/config` and `sway/clock.py` to select a different image; ring colors show verification and incorrect-password states. Test the theme with Super+Escape. No idle or suspend locking is configured.
 
 Notifications use Mako, configured in [mako/config](mako/config) and started by Sway at login. The user confirmed notifications work. On a new CachyOS installation, install it with `sudo pacman -S mako`, then test with `notify-send "Test notification" "Mako is working"`. The config controls position, timeout, margin, and width; each line is explained in the file.
 

@@ -1,4 +1,4 @@
-# Dracula background, with a visible rose-ringed password indicator.
+# Fallback background and a visible rose-ringed password indicator.
 color=282a36
 indicator-idle-visible
 indicator-radius=90

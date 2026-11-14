@@ -27,7 +27,7 @@ def handle_clicks():
             'dnd': ['makoctl', 'mode', '-t', 'do-not-disturb'],
             'clock': ['env', 'QT_QPA_PLATFORMTHEME=kde', 'calindori'],
             'battery': [sys.executable, str(Path.home() / '.config/sway/battery.py')],
-            'power': ['sh', '-c', "choice=$(printf 'Lock\nLogout\nReboot\nShutdown\n' | wofi --dmenu --insensitive --prompt Power); case \"$choice\" in Lock) swaylock ;; Logout) swaynag -t warning -m 'Log out of Sway?' -B 'Logout' 'swaymsg exit' ;; Reboot) swaynag -t warning -m 'Reboot this computer?' -B 'Reboot' 'systemctl reboot' ;; Shutdown) swaynag -t warning -m 'Shut down this computer?' -B 'Shutdown' 'systemctl poweroff' ;; esac"],
+            'power': ['sh', '-c', "choice=$(printf 'Lock\nLogout\nReboot\nShutdown\n' | wofi --dmenu --insensitive --prompt Power); case \"$choice\" in Lock) swaylock --image \"$HOME/Pictures/Wallpaper/pepe landscape.jpg\" --scaling fill ;; Logout) swaynag -t warning -m 'Log out of Sway?' -B 'Logout' 'swaymsg exit' ;; Reboot) swaynag -t warning -m 'Reboot this computer?' -B 'Reboot' 'systemctl reboot' ;; Shutdown) swaynag -t warning -m 'Shut down this computer?' -B 'Shutdown' 'systemctl poweroff' ;; esac"],
             'mute': [sys.executable, '-u', str(Path.home() / '.config/sway/audio.py'), 'mute'],
             'previous': ['playerctl', 'previous'],
             'play': ['playerctl', 'play-pause'],
