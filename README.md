@@ -16,7 +16,7 @@ Dolphin, Kalk, and Calindori launched from the configured Sway shortcuts or cloc
 
 ## Sway appearance
 
-Sway windows and the panel, Wofi menus, and Mako notifications use a Dracula-inspired palette. Their colors live in `sway/config`, `wofi/style.css`, and `mako/config`. KDE and GTK application themes remain separate. Reload Sway with Super+Shift+C and Mako with `makoctl reload` after changes.
+Sway uses a muted rose (`#B76E79`) focused window title bar and border, with a Dracula-inspired palette for the panel, Wofi menus, and Mako notifications. Their colors live in `sway/config`, `wofi/style.css`, and `mako/config`. KDE and GTK application themes remain separate. Reload Sway with Super+Shift+C and Mako with `makoctl reload` after changes.
 
 Wofi searches are case-insensitive in the configured launcher and menus.
 

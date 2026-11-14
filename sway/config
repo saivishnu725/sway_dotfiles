@@ -118,9 +118,9 @@ for_window [app_id="org.kde.kalk"] floating enable
 # Open Calindori as a compact floating window when its Wayland app ID matches.
 for_window [app_id="org.kde.calindori"] floating enable, resize set 500 600
 
-# Dracula palette: focused border, title background, text, indicator, child border.
+# Rose focused title bar and border; Dracula indicator and text.
 # Fields: border, background, text, indicator, child border.
-client.focused #bd93f9 #44475a #f8f8f2 #ff79c6 #bd93f9
+client.focused #B76E79 #B76E79 #f8f8f2 #ff79c6 #B76E79
 
 # Show workspace buttons and a clickable clock in a bar at the top.
 bar {
