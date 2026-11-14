@@ -77,6 +77,8 @@ Install `cliphist` on CachyOS with `sudo pacman -S cliphist`, then log out and b
 
 ## Reproduce
 
+Run `./setup.sh` from the clone to check for common commands and create the links listed below. Existing paths are skipped; the script exits with a nonzero status if any need attention. After reviewing them, run `./setup.sh --backup` to move conflicting files or symlinks to timestamped backups beside their original locations and create the links. Existing correct links are left alone, so the script can be run again. It does not install packages or configure services; dependency checks are advisory.
+
 Install Sway, COSMIC Terminal, Dolphin, Firefox, Wofi, NetworkManager, the NetworkManager connection editor, Kalk, Grim, Slurp, Swappy, wl-clipboard, cliphist, pavucontrol, Calindori, swaylock, Mako, libnotify, WirePlumber, playerctl, swaybg, wl-mirror, wdisplays, upower, power-profiles-daemon, xdg-desktop-portal, xdg-desktop-portal-gtk, xdg-desktop-portal-wlr, slurp, and Python 3 using your distribution's packages. Ensure NetworkManager is running. Package names may differ. Clone the repository, then from its root:
 
 ```sh
