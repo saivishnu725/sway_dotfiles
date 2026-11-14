@@ -1,0 +1,6 @@
+/* Dracula-inspired launcher and menu colors. */
+window { background-color: #282a36; color: #f8f8f2; border: 2px solid #bd93f9; }
+#input { background-color: #44475a; color: #f8f8f2; border: none; margin: 8px; }
+#inner-box { margin: 4px 8px 8px; }
+#entry { padding: 5px; }
+#entry:selected { background-color: #44475a; color: #f8f8f2; }

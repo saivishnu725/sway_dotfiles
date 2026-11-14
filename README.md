@@ -16,7 +16,7 @@ Dolphin, Kalk, and Calindori launched from the configured Sway shortcuts or cloc
 
 ## Sway appearance
 
-The focused window and active workspace use the muted rose accent `#B76E79`. Edit the `client.focused` and `focused_workspace` colors in `sway/config` to change it; app-specific themes are separate.
+Sway windows and the panel, Wofi menus, and Mako notifications use a Dracula-inspired palette. Their colors live in `sway/config`, `wofi/style.css`, and `mako/config`. KDE and GTK application themes remain separate. Reload Sway with Super+Shift+C and Mako with `makoctl reload` after changes.
 
 Wofi searches are case-insensitive in the configured launcher and menus.
 
@@ -83,7 +83,7 @@ Install Sway, COSMIC Terminal, Dolphin, Firefox, Wofi, NetworkManager, the Netwo
 
 ```sh
 sway --validate --config "$PWD/sway/config"
-mkdir -p ~/.config/sway ~/.config/mako ~/.config/swappy ~/.config/xdg-desktop-portal-wlr
+mkdir -p ~/.config/sway ~/.config/mako ~/.config/wofi ~/.config/swappy ~/.config/xdg-desktop-portal-wlr
 ln -s "$PWD/sway/config" ~/.config/sway/config
 ln -s "$PWD/sway/clock.py" ~/.config/sway/clock.py
 ln -s "$PWD/sway/audio.py" ~/.config/sway/audio.py
@@ -93,11 +93,12 @@ ln -s "$PWD/sway/screenshot.sh" ~/.config/sway/screenshot.sh
 ln -s "$PWD/sway/battery.py" ~/.config/sway/battery.py
 ln -s "$PWD/sway/wallpaper.py" ~/.config/sway/wallpaper.py
 ln -s "$PWD/mako/config" ~/.config/mako/config
+ln -s "$PWD/wofi/style.css" ~/.config/wofi/style.css
 ln -s "$PWD/swappy/config" ~/.config/swappy/config
 ln -s "$PWD/xdg-desktop-portal-wlr/config" ~/.config/xdg-desktop-portal-wlr/config
 ```
 
-Inspect and back up existing `~/.config/sway/config`, `~/.config/sway/clock.py`, `~/.config/sway/audio.py`, `~/.config/sway/displays.py`, `~/.config/sway/shortcuts.py`, `~/.config/sway/screenshot.sh`, `~/.config/sway/battery.py`, `~/.config/sway/wallpaper.py`, `~/.config/mako/config`, `~/.config/swappy/config`, and `~/.config/xdg-desktop-portal-wlr/config` files before linking; do not overwrite it blindly. The link uses the clone's absolute path, so recreate it if the repository moves. Keep credentials and NetworkManager connection profiles out of Git.
+Inspect and back up existing `~/.config/sway/config`, `~/.config/sway/clock.py`, `~/.config/sway/audio.py`, `~/.config/sway/displays.py`, `~/.config/sway/shortcuts.py`, `~/.config/sway/screenshot.sh`, `~/.config/sway/battery.py`, `~/.config/sway/wallpaper.py`, `~/.config/mako/config`, `~/.config/wofi/style.css`, `~/.config/swappy/config`, and `~/.config/xdg-desktop-portal-wlr/config` files before linking; do not overwrite it blindly. The link uses the clone's absolute path, so recreate it if the repository moves. Keep credentials and NetworkManager connection profiles out of Git.
 
 ## Zsh and Neovim
 

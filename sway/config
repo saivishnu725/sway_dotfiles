@@ -118,16 +118,21 @@ for_window [app_id="org.kde.kalk"] floating enable
 # Open Calindori as a compact floating window when its Wayland app ID matches.
 for_window [app_id="org.kde.calindori"] floating enable, resize set 500 600
 
-# Muted rose accent for the focused window border, title bar, and indicator.
+# Dracula palette: focused border, title background, text, indicator, child border.
 # Fields: border, background, text, indicator, child border.
-client.focused #B76E79 #B76E79 #ffffff #B76E79 #B76E79
+client.focused #bd93f9 #44475a #f8f8f2 #ff79c6 #bd93f9
 
 # Show workspace buttons and a clickable clock in a bar at the top.
 bar {
     position top
     # Focused workspace colors: border, background, text.
     colors {
-        focused_workspace #B76E79 #B76E79 #ffffff
+        background #282a36
+        statusline #f8f8f2
+        focused_workspace #bd93f9 #44475a #f8f8f2
+        active_workspace #6272a4 #282a36 #f8f8f2
+        inactive_workspace #282a36 #282a36 #f8f8f2
+        urgent_workspace #ff5555 #ff5555 #282a36
     }
     # Run the repository clock script through the config symlink.
     status_command python3 ~/.config/sway/clock.py

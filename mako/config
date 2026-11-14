@@ -1,3 +1,9 @@
+# Dracula-inspired notification colors.
+background-color=#282a36
+text-color=#f8f8f2
+border-color=#bd93f9
+border-size=2
+
 # Show notifications near the top-right corner of the screen.
 anchor=top-right
 # Dismiss ordinary notifications after 5 seconds (milliseconds).
