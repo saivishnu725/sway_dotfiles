@@ -18,6 +18,11 @@ width=350
 group-by=app-name
 default-timeout=1500
 
+# Group brightness key notifications and dismiss them quickly.
+[app-name="Sway brightness"]
+group-by=app-name
+default-timeout=1500
+
 # Hide notifications while Do Not Disturb is enabled.
 [mode=do-not-disturb]
 invisible=1

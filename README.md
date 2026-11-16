@@ -50,6 +50,8 @@ Swaylock is installed and manual locking has been tested. [swaylock/config](sway
 
 Notifications use Mako, configured in [mako/config](mako/config) and started by Sway at login. The user confirmed notifications work. On a new CachyOS installation, install it with `sudo pacman -S mako`, then test with `notify-send "Test notification" "Mako is working"`. The config controls position, timeout, margin, and width; each line is explained in the file.
 
+Laptop brightness keys use `brightnessctl` to change the backlight by 5% and show the resulting level. Install it on CachyOS with `sudo pacman -S brightnessctl`; then reload Sway and Mako. The keys need an interactive test and may require backlight permissions on other systems.
+
 Hardware volume-up, volume-down, speaker-mute, and microphone-mute keys use `wpctl` from WirePlumber. Volume changes in 5% steps and increases are capped at 100%. These bindings also work while locked. Each hardware-key action shows the resulting level or mute state through [sway/audio.py](sway/audio.py); Mako groups these notifications and dismisses them after 1.5 seconds. Changes made directly in other applications do not invoke this helper. Reload Sway with Super+Shift+C after editing them; use pavucontrol (Super+A) for detailed audio settings. Test the keys on your keyboard.
 
 ### Wallpaper rotation
@@ -79,7 +81,7 @@ Install `cliphist` on CachyOS with `sudo pacman -S cliphist`, then log out and b
 
 Run `./setup.sh` from the clone to check for common commands and create the links listed below. Existing paths are skipped; the script exits with a nonzero status if any need attention. After reviewing them, run `./setup.sh --backup` to move conflicting files or symlinks to timestamped backups beside their original locations and create the links. Existing correct links are left alone, so the script can be run again. It does not install packages or configure services; dependency checks are advisory.
 
-Install Sway, COSMIC Terminal, Dolphin, Firefox, Wofi, NetworkManager, the NetworkManager connection editor, Kalk, Grim, Slurp, Swappy, wl-clipboard, cliphist, pavucontrol, Calindori, swaylock, Mako, libnotify, WirePlumber, playerctl, swaybg, wl-mirror, wdisplays, upower, power-profiles-daemon, xdg-desktop-portal, xdg-desktop-portal-gtk, xdg-desktop-portal-wlr, slurp, and Python 3 using your distribution's packages. Ensure NetworkManager is running. Package names may differ. Clone the repository, then from its root:
+Install Sway, COSMIC Terminal, Dolphin, Firefox, Wofi, NetworkManager, the NetworkManager connection editor, Kalk, Grim, Slurp, Swappy, wl-clipboard, cliphist, pavucontrol, Calindori, swaylock, Mako, libnotify, brightnessctl, WirePlumber, playerctl, swaybg, wl-mirror, wdisplays, upower, power-profiles-daemon, xdg-desktop-portal, xdg-desktop-portal-gtk, xdg-desktop-portal-wlr, slurp, and Python 3 using your distribution's packages. Ensure NetworkManager is running. Package names may differ. Clone the repository, then from its root:
 
 ```sh
 sway --validate --config "$PWD/sway/config"
@@ -87,6 +89,7 @@ mkdir -p ~/.config/sway ~/.config/swaylock ~/.config/mako ~/.config/wofi ~/.conf
 ln -s "$PWD/sway/config" ~/.config/sway/config
 ln -s "$PWD/sway/clock.py" ~/.config/sway/clock.py
 ln -s "$PWD/sway/audio.py" ~/.config/sway/audio.py
+ln -s "$PWD/sway/brightness.py" ~/.config/sway/brightness.py
 ln -s "$PWD/sway/displays.py" ~/.config/sway/displays.py
 ln -s "$PWD/sway/shortcuts.py" ~/.config/sway/shortcuts.py
 ln -s "$PWD/sway/screenshot.sh" ~/.config/sway/screenshot.sh
@@ -99,7 +102,7 @@ ln -s "$PWD/swappy/config" ~/.config/swappy/config
 ln -s "$PWD/xdg-desktop-portal-wlr/config" ~/.config/xdg-desktop-portal-wlr/config
 ```
 
-Inspect and back up existing `~/.config/sway/config`, `~/.config/sway/clock.py`, `~/.config/sway/audio.py`, `~/.config/sway/displays.py`, `~/.config/sway/shortcuts.py`, `~/.config/sway/screenshot.sh`, `~/.config/sway/battery.py`, `~/.config/sway/wallpaper.py`, `~/.config/swaylock/config`, `~/.config/mako/config`, `~/.config/wofi/style.css`, `~/.config/swappy/config`, and `~/.config/xdg-desktop-portal-wlr/config` files before linking; do not overwrite it blindly. The link uses the clone's absolute path, so recreate it if the repository moves. Keep credentials and NetworkManager connection profiles out of Git.
+Inspect and back up existing `~/.config/sway/config`, `~/.config/sway/clock.py`, `~/.config/sway/audio.py`, `~/.config/sway/brightness.py`, `~/.config/sway/displays.py`, `~/.config/sway/shortcuts.py`, `~/.config/sway/screenshot.sh`, `~/.config/sway/battery.py`, `~/.config/sway/wallpaper.py`, `~/.config/swaylock/config`, `~/.config/mako/config`, `~/.config/wofi/style.css`, `~/.config/swappy/config`, and `~/.config/xdg-desktop-portal-wlr/config` files before linking; do not overwrite it blindly. The link uses the clone's absolute path, so recreate it if the repository moves. Keep credentials and NetworkManager connection profiles out of Git.
 
 ## Zsh and Neovim
 

@@ -33,6 +33,10 @@ bindsym $mod+s exec sh ~/.config/sway/screenshot.sh
 # Open KDE Kalk with the keyboard calculator key.
 bindsym XF86Calculator exec env QT_QPA_PLATFORMTHEME=kde kalk
 
+# Laptop brightness keys: adjust by 5% and show the new level.
+bindsym --locked XF86MonBrightnessUp exec python3 ~/.config/sway/brightness.py up
+bindsym --locked XF86MonBrightnessDown exec python3 ~/.config/sway/brightness.py down
+
 # Hardware audio keys control the default output through WirePlumber.
 # Each press changes volume by 5%; the increase is capped at 100%.
 bindsym --locked XF86AudioRaiseVolume exec python3 ~/.config/sway/audio.py up
